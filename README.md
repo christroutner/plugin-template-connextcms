@@ -48,12 +48,12 @@ Need to differentiate between Customizing a new site vs plugins:
       * =2 new files + modification of routes/index.js file
   * Assumption: No need to modify the main keystone.js file.
   * Will probably want to load additional JavaScript libraries in the /public/js directory.
-		○ There can be zero to many plugins per site.
-		○ Examples of plugins:
-			§ eCommerce/Product Management
-			§ User Management
-			§ Logging work
-			§ Displaying website analytics summary
+  * There can be zero to many plugins per site.
+  * Examples of plugins:
+    * eCommerce/Product Management
+    * User Management
+    * Logging work
+    * Displaying website analytics summary
       
       
 * A new site:
