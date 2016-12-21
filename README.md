@@ -1,9 +1,9 @@
 # connextcms-plugin-template
-This is a template for developing your own plugins for ConnextCMS.
+This is a template for developing your own plugins for [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS).
 
 This repository is actively being developed. It is not ready for general use yet. 
 
-# Plugin Considerations
+# Plugin & New Site Considerations
 The main things that a plugin or new site will need to modify on a ConnextCMS install is:
 * Keystone Misc Files
   * /keystone.js - Probably want to add or modify parts of this file, or at least replace the original.
@@ -18,20 +18,20 @@ The main things that a plugin or new site will need to modify on a ConnextCMS in
     * templates/views/layouts/default.hbs  - Will want to modify parts of this file.
     * templates/views/ - May want to add files to this directory.
   * KeystoneJS Models
-		○ models/ - Will want to add or replace files in this directory.
-	○ Public directory
-		○ /public/images/ - Will want to add images to this directory
-		○ /public/styles/ - Will want to add files to this directory
-		○ /public/js/ - Will want to add files to this directory
-		○ /public/js/lib/ - Will want to add files to this directory
-		○ /public/js/cms_common.js - Require.js file. Each plugin can have its own file like this that gets loaded after this one.
-	○ Backbone
-		○ /public/app/model/ - Will want to add files to this directory
-		○ /public/app/templates/ - Will want to add or modify files in this directory
-		○ /public/app/views/ - Will want to add or modify files in this directory
-		○ /public/app/ - May want to add whole new directories here containing Backbone applications.
-		○ /public/app/templates/leftMenu.html - Will want to modify this to add new views to the menu. Not sure how to do this.
-		○ /public/app/views/leftMenuView.js - Will want to modify this to add new views to the menu. Not sure how to do this.
+    * models/ - Will want to add or replace files in this directory.
+  * Public directory
+    * /public/images/ - Will want to add images to this directory
+    * /public/styles/ - Will want to add files to this directory
+    * /public/js/ - Will want to add files to this directory
+		* /public/js/lib/ - Will want to add files to this directory
+		* /public/js/cms_common.js - Require.js file. Each plugin can have its own file like this that gets loaded after this one.
+  * Backbone
+    * /public/app/model/ - Will want to add files to this directory
+    * /public/app/templates/ - Will want to add or modify files in this directory
+		* /public/app/views/ - Will want to add or modify files in this directory
+		* /public/app/ - May want to add whole new directories here containing Backbone applications.
+		* /public/app/templates/leftMenu.html - Will want to modify this to add new views to the menu. Not sure how to do this.
+		* /public/app/views/leftMenuView.js - Will want to modify this to add new views to the menu. Not sure how to do this.
 
 
 -Need to differentiate between Customizing a new site vs plugins:
