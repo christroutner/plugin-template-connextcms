@@ -49,6 +49,9 @@ Need to differentiate between Customizing a new site vs plugins:
   * Assumption: No need to modify the main keystone.js file.
   * Will probably want to load additional JavaScript libraries in the /public/js directory.
   * There can be zero to many plugins per site.
+  * More appropriate if loaded into a `/private/plugins` directory
+  
+  
   * Examples of plugins:
     * eCommerce/Product Management
     * User Management
@@ -56,8 +59,10 @@ Need to differentiate between Customizing a new site vs plugins:
     * Displaying website analytics summary
       
       
+      
 * A new site:
   * Will definitely want to replace the default.hbs and index.hbs files.
   * Will definitely want to replace the keystone.js file.
   * Will have its own JavaScript, CSS, and Font files.
   * There will only be one 'site' that may contain many 'plugins'
+  * A site is more appropriate for a `./merge` file.
