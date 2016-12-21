@@ -8,16 +8,16 @@ The main things that a plugin or new site will need to modify on a ConnextCMS in
 * Keystone Misc Files
   * /keystone.js - Probably want to add or modify parts of this file, or at least replace the original.
   * KeystoneJS Routes
-		○ routes/index.js - need to modify or insert instructions into this file
-		○ routes/api/ - just need to copy files into this directory
-		○ routes/views/ - just need to copy files into this directory
-	○ KeystoneJS Templates
-		○ templates/views/index.hbs - Will want to replace this default file.
-		○ templates/views/dashboard.hbs - Will want to append parts to this file. Not sure how to do this
-			§ I may be able to create a <div> at the end of all the view divs. Make sure it's not of class 'container'. I can then create a Backbone view that loads the plugin views into this div.
-		○ templates/views/layouts/default.hbs  - Will want to modify parts of this file.
-		○ templates/views/ - May want to add files to this directory.
-	○ KeystoneJS Models
+    * routes/index.js - need to modify or insert instructions into this file
+    * routes/api/ - just need to copy files into this directory
+    * routes/views/ - just need to copy files into this directory
+  * KeystoneJS Templates
+    * templates/views/index.hbs - Will want to replace this default file.
+    * templates/views/dashboard.hbs - Will want to append parts to this file. Not sure how to do this
+      * I may be able to create a <div> at the end of all the view divs. Make sure it's not of class 'container'. I can then create a Backbone view that loads the plugin views into this div.
+    * templates/views/layouts/default.hbs  - Will want to modify parts of this file.
+    * templates/views/ - May want to add files to this directory.
+  * KeystoneJS Models
 		○ models/ - Will want to add or replace files in this directory.
 	○ Public directory
 		○ /public/images/ - Will want to add images to this directory
