@@ -14,7 +14,7 @@ The main things that a plugin or new site will need to modify on a ConnextCMS in
 * KeystoneJS Templates
   * templates/views/index.hbs - Will want to replace this default file.
   * templates/views/dashboard.hbs - Will want to append parts to this file. **Not sure how to do this**
-    * I may be able to create a <div> at the end of all the view divs. Make sure it's not of class 'container'. I can then create a Backbone view that loads the plugin views into this div.
+    * *I may be able to create a div at the end of all the view divs. Make sure it's not of class 'container'. I can then create a Backbone view that loads the plugin views into this div.*
   * templates/views/layouts/default.hbs  - Will want to modify parts of this file.
   * templates/views/ - May want to add files to this directory.
 * KeystoneJS Models
