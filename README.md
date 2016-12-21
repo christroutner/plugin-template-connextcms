@@ -13,7 +13,7 @@ The main things that a plugin or new site will need to modify on a ConnextCMS in
   * routes/views/ - just need to copy files into this directory
 * KeystoneJS Templates
   * templates/views/index.hbs - Will want to replace this default file.
-  * templates/views/dashboard.hbs - Will want to append parts to this file. *Not sure how to do this*
+  * templates/views/dashboard.hbs - Will want to append parts to this file. **Not sure how to do this**
     * I may be able to create a <div> at the end of all the view divs. Make sure it's not of class 'container'. I can then create a Backbone view that loads the plugin views into this div.
   * templates/views/layouts/default.hbs  - Will want to modify parts of this file.
   * templates/views/ - May want to add files to this directory.
@@ -30,8 +30,8 @@ The main things that a plugin or new site will need to modify on a ConnextCMS in
   * /public/app/templates/ - Will want to add or modify files in this directory
   * /public/app/views/ - Will want to add or modify files in this directory
   * /public/app/ - May want to add whole new directories here containing Backbone applications.
-  * /public/app/templates/leftMenu.html - Will want to modify this to add new views to the menu. *Not sure how to do this.*
-  * /public/app/views/leftMenuView.js - Will want to modify this to add new views to the menu. *Not sure how to do this.*
+  * /public/app/templates/leftMenu.html - Will want to modify this to add new views to the menu. **Not sure how to do this.**
+  * /public/app/views/leftMenuView.js - Will want to modify this to add new views to the menu. **Not sure how to do this.**
 
 
 # New Site vs Plugin
