@@ -1,6 +1,6 @@
 
 var msg = 'The second example view was loaded!';
 
-alert(msg);
+//alert(msg);
 
 console.log(msg);
