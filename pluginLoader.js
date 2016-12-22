@@ -46,10 +46,10 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
 // ---BEGIN LEFT MENU---
 
 var pluginLi = global.leftMenuView.$el.find('#plugin-link');
-var tmpLi = pluginLi.clone();
+//var tmpLi = pluginLi.clone();
 
 //Construct and add a menu item for the first view.
-tmpLi.html('<li id="example1-link"><a href="#/" onclick="global.pluginView.exampleView1.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>');
+var tmpLi = '<li id="example1-link"><a href="#/" onclick="global.pluginView.exampleView1.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
 pluginLi.parent().append(tmpLi);
 
 
