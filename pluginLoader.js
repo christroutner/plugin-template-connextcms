@@ -32,7 +32,7 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
   thisPlugin.views.push(thisPlugin.exampleView1);
   
   //Render the view
-  thisPlugin.exampleView1.render(pluginData);
+  //thisPlugin.exampleView1.render(pluginData);
   
 })
 .fail(function( jqxhr, settings, exception ) {
