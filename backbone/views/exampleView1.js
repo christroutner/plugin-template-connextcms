@@ -3,7 +3,7 @@ debugger;
 
 'use strict';
 
-var ExampleTemplate1 = 'text!../templates/exampleTemplate1.html';
+var ExampleTemplate1 = '../templates/exampleTemplate1.html';
 
 var ExampleView1 = Backbone.View.extend({
 
