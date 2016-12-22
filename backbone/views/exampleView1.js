@@ -11,7 +11,7 @@ var ExampleView1 = Backbone.View.extend({
 
   el: '', 
 
-  template: _.template(ExampleTemplate1),
+  //template: _.template(ExampleTemplate1),
 
   // The DOM events specific to an item.
   events: {
@@ -21,6 +21,15 @@ var ExampleView1 = Backbone.View.extend({
   initialize: function () {
     debugger;
     
+    //Get the template associated with this view.
+    $.getScript(ExampleTemplate1, function(data, textStatus, jqxhr) {
+      debugger;
+      
+      
+    })
+    .fail(function( jqxhr, settings, exception ) {
+      debugger;
+    });
   },
 
   render: function () {
