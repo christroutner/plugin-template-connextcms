@@ -43,15 +43,35 @@ var ExampleView1 = Backbone.View.extend({
   render: function () {
     debugger;
     
+    //Hide all views.
     global.leftMenuView.hideAll();
     
-    this.$el.html(this.template);
-    
+    //Render this view
+    this.$el.html(this.template);    
     this.$el.show();
+    
+    this.updateLeftMenuView();
     
     return this;
   },
 
+  
+  //This function is called by render(). It's responsible for maintinain visual consistency in the
+  //left menu when the menu item for this plugin is selected.
+  updateLeftMenuView: function() {
+    debugger;
+    //Remove the 'active' class from the menu item, unless it's a treeview menu item.
+    //(treeview) menu items will remove their active class in their click event.
+    if( !global.leftMenuView.$el.find('.sidebar-menu').find('.active').hasClass('treeview') )
+      global.leftMenuView.$el.find('.sidebar-menu').find('.active').removeClass('active');
+    else
+      global.leftMenuView.closeCollapsableLeftMenu();
+
+    //Switch the 'active' class to the selected menu item
+    $('#example1-link').parent().addClass('active');
+
+    $('#app-location').text('Plugin Example View');
+  }
 
 
 });
