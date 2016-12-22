@@ -18,17 +18,14 @@ var ExampleView1 = Backbone.View.extend({
 
   },
 
-  initialize: function (divId) {
+  initialize: function () {
     debugger;
     
-    this.el = divId;
   },
 
   render: function () {
     debugger;
 
-    
-    
     this.$el.html(this.template);
 
     this.$el.show();
