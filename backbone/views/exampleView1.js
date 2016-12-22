@@ -29,12 +29,12 @@ var ExampleView1 = Backbone.View.extend({
 
     //Get the template associated with this view.
     var templatePath = '/plugins/'+pluginData.pluginDirName+ExampleTemplate1;
-    $.getScript(templatePath, function(data, textStatus, jqxhr) {
+    $.get(templatePath, '', function(data) {
       debugger;
       
       
     })
-    .fail(function( jqxhr, settings, exception ) {
+    .fail(function( jqxhr, error, exception ) {
       debugger;
     });
     
