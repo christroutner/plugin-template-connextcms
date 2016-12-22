@@ -20,10 +20,21 @@ debugger;
 $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatus, jqxhr) {
   debugger;
   
+  //Create the new view.
   thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId)});
+  
+  //Create a global reference to this view.
+  global.pluginView.exampleView1 = thisPlugin.exampleView1;
+  
+  //Add this view to the loadedPlugins.views[] array.
+  thisPlugin.views.push(thisPlugin.exampleView1);
+  
+  //Render the view
   thisPlugin.exampleView1.render(pluginData);
   
-  thisPlugin.views.push(thisPlugin.exampleView1);
+  
+  
+  
 })
 .fail(function( jqxhr, settings, exception ) {
   debugger;
