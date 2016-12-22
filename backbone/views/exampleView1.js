@@ -21,7 +21,7 @@ define([
 		},
 
 		initialize: function () {
-			
+			debugger;
 		},
 
     render: function () {
