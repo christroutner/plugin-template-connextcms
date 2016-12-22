@@ -2,5 +2,5 @@
 echo Preparing to copy into myCMS directory...
 
 mkdir ../myCMS/public/plugins
-cp -r ../plugin-template-connextcms ../myCMS/public/plugins/
+cp -rf ../plugin-template-connextcms ../myCMS/public/plugins/
 
