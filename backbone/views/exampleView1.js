@@ -74,7 +74,7 @@ var ExampleView1 = Backbone.View.extend({
     });
     */
     
-    this.$el.html(thisView.template);
+    this.$el.html(this.template);
     
     this.$el.show();
     
