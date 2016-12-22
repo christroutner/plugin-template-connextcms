@@ -3,7 +3,7 @@ debugger;
 
 'use strict';
 
-var ExampleTemplate1 = 'templates/exampleTemplate1.html';
+var ExampleTemplate1 = '/templates/exampleTemplate1.html';
 
 var ExampleView1 = Backbone.View.extend({
 
@@ -28,7 +28,7 @@ var ExampleView1 = Backbone.View.extend({
     debugger;
 
     //Get the template associated with this view.
-    var templatePath = '/plugins/'+pluginData.pluginDirName+'/'ExampleTemplate1;
+    var templatePath = '/plugins/'+pluginData.pluginDirName+ExampleTemplate1;
     $.getScript(templatePath, function(data, textStatus, jqxhr) {
       debugger;
       
