@@ -74,6 +74,8 @@ var ExampleView1 = Backbone.View.extend({
     });
     */
     
+    global.leftMenuView.hideAll();
+    
     this.$el.html(this.template);
     
     this.$el.show();
