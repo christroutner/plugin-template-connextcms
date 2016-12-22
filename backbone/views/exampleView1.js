@@ -69,7 +69,7 @@ var ExampleView1 = Backbone.View.extend({
       global.leftMenuView.closeCollapsableLeftMenu();
 
     //Switch the 'active' class to the selected menu item
-    $('#example1-link').parent().addClass('active');
+    $('#example1-link').addClass('active');
 
     $('#app-location').text('Plugin Example View');
   }
