@@ -1,15 +1,6 @@
 debugger;
 
-//Initialize the Object representing this plugin.
-var thisPlugin = new Object();
-thisPlugin.views = [];
-thisPlugin.models = [];
 
-//Add this plugin to the loadedPlugins array.
-global.pluginView.loadedPlugins.push(thisPlugin);
-
-//Get the index of this plugin
-var pluginIndex = global.pluginView.loadedPlugins.length-1;
 
 //Get the JSON settings for this plugin.
 var pluginData = global.pluginView.pluginData[pluginIndex];
