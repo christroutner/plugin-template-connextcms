@@ -18,7 +18,7 @@ var ExampleView1 = Backbone.View.extend({
 
   },
 
-  initialize: function () {
+  initialize: function (divId) {
     debugger;
   },
 
