@@ -1,5 +1,5 @@
 {
-  plugin: {
+  "plugin": {
     "pluginDirName": "plugin-template-connextcms",
     
     "backboneTemplates": ["backbone/templates/exampleTemplate1.html","backbone/templates/exampleTemplate2.html"],
