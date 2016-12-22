@@ -38,6 +38,6 @@ define([
 
 	});
 
-  //debugger;
+  debugger;
 	return ExampleView1;
 });
