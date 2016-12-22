@@ -19,7 +19,11 @@ debugger;
 //Load the individual views for this plugin.
 $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatus, jqxhr) {
   debugger;
-  thisPlugin.views.push(new ExampleView1());
+  
+  thisPlugin.exampleView1 = new ExampleView1();
+  thisPlugin.exampleView1.render(pluginData.divId);
+  
+  thisPlugin.views.push(thisPlugin.exampleView1);
 })
 .fail(function( jqxhr, settings, exception ) {
   debugger;
