@@ -50,6 +50,7 @@ var ExampleView1 = Backbone.View.extend({
     this.$el.html(this.template);    
     this.$el.show();
     
+    //Visually update the left menu to inidicate that this plugin view was selected.
     this.updateLeftMenuView();
     
     return this;
