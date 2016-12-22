@@ -41,6 +41,8 @@ var ExampleView1 = Backbone.View.extend({
 
       thisView.$el.show();
       
+      debugger;
+      
     })
     .fail(function( jqxhr, error, exception ) {
       debugger;
