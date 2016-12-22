@@ -36,5 +36,13 @@ var ExampleView1 = Backbone.View.extend({
 
 });
 
+
+var thisPlugin = new Object();
+thisPlugin.views = [];
+thisPlugin.views.push(new ExampleView1());
+
+global.pluginView.loadedPlugins.push(thisPlugin);
+
 debugger;
-return ExampleView1;
+
+
