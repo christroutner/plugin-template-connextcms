@@ -30,17 +30,9 @@ var ExampleView1 = Backbone.View.extend({
     $.get(templatePath, '', function(template) {
       debugger;
       
-      //var thisView = global.pluginView.exampleView1;
-      
       //Copy the contents of the template file into this views template object.
       thisView.template = _.template(template);
-      
-      
 
-      //thisView.$el.show();
-      
-      debugger;
-      
     })
     .fail(function( jqxhr, error, exception ) {
       debugger;
@@ -50,29 +42,6 @@ var ExampleView1 = Backbone.View.extend({
 
   render: function () {
     debugger;
-
-    /*
-    //Get the template associated with this view.
-    var templatePath = '/plugins/'+pluginData.pluginDirName+ExampleTemplate1;
-    $.get(templatePath, '', function(template) {
-      debugger;
-      
-      var thisView = global.pluginView.exampleView1;
-      
-      //Copy the contents of the template file into this views template object.
-      thisView.template = _.template(template);
-      
-      thisView.$el.html(thisView.template);
-
-      thisView.$el.show();
-      
-      debugger;
-      
-    })
-    .fail(function( jqxhr, error, exception ) {
-      debugger;
-    });
-    */
     
     global.leftMenuView.hideAll();
     
