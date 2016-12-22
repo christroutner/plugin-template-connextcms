@@ -14,14 +14,16 @@ global.pluginView.pluginData[pluginIndex].pluginIndex = pluginIndex;
 var pluginData = global.pluginView.pluginData[pluginIndex];
 var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 
-debugger;
+
+
+// ---BEGIN BACKBONE VIEWS---
 
 //Load the individual views for this plugin.
 $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatus, jqxhr) {
-  debugger;
+  //debugger;
   
   //Create the new view.
-  thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId)});
+  thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
   
   //Create a global reference to this view.
   global.pluginView.exampleView1 = thisPlugin.exampleView1;
@@ -32,11 +34,22 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
   //Render the view
   thisPlugin.exampleView1.render(pluginData);
   
-  
-  
-  
 })
 .fail(function( jqxhr, settings, exception ) {
   debugger;
 });
 
+// ---END BACKBONE VIEWS---
+
+
+
+// ---BEGIN LEFT MENU---
+
+var tmpLi = global.leftMenuView.$el.find('#plugin-link').clone();
+
+//Construct and add a menu item for the first view.
+tmpLi.html('<li id="example1-link"><a href="#/" onclick="global.pluginView.exampleView1.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>');
+tmpLi.parent().append(tmpLi);
+
+
+// ---BEGIN LEFT MENU---
