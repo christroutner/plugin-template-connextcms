@@ -1,0 +1,6 @@
+#!/bin/bash
+echo Preparing to copy into myCMS directory...
+
+mkdir ../myCMS/private/plugins
+cp -r ../plugin-template-connextcms ../myCMS/private/plugins/
+
