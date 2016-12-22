@@ -24,7 +24,7 @@ var ExampleView1 = Backbone.View.extend({
     
   },
 
-  render: function () {
+  render: function (pluginData) {
     debugger;
 
     //Get the template associated with this view.
