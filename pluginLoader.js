@@ -20,8 +20,8 @@ debugger;
 $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatus, jqxhr) {
   debugger;
   
-  thisPlugin.exampleView1 = new ExampleView1(pluginData.divId);
-  thisPlugin.exampleView1.render(pluginData.divId);
+  thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId)});
+  thisPlugin.exampleView1.render();
   
   thisPlugin.views.push(thisPlugin.exampleView1);
 })
