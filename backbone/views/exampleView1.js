@@ -1,3 +1,5 @@
+debugger;
+
 /*global define*/
 define([
 	'jQuery-2.1.4.min',
@@ -41,3 +43,5 @@ define([
   debugger;
 	return ExampleView1;
 });
+
+debugger;
