@@ -32,10 +32,12 @@ var ExampleView1 = Backbone.View.extend({
     $.get(templatePath, '', function(template) {
       debugger;
       
-      //Copy the contents of the template file into this views template object.
-      global.pluginView.exampleView1.template = _.template(template);
+      var thisView = global.pluginView.exampleView1;
       
-      this.$el.html(this.template);
+      //Copy the contents of the template file into this views template object.
+      thisView.template = _.template(template);
+      
+      this.$el.html(thisView.template);
 
       this.$el.show();
       
