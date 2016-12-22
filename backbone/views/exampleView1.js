@@ -35,7 +35,7 @@ var ExampleView1 = Backbone.View.extend({
       //Copy the contents of the template file into this views template object.
       thisView.template = _.template(template);
       
-      thisView.$el.html(thisView.template);
+      
 
       //thisView.$el.show();
       
@@ -74,7 +74,9 @@ var ExampleView1 = Backbone.View.extend({
     });
     */
     
-    thisView.$el.show();
+    this.$el.html(thisView.template);
+    
+    this.$el.show();
     
     return this;
   },
