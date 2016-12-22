@@ -21,7 +21,7 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
   debugger;
   
   thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId)});
-  thisPlugin.exampleView1.render();
+  thisPlugin.exampleView1.render(pluginData);
   
   thisPlugin.views.push(thisPlugin.exampleView1);
 })

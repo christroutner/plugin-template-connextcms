@@ -21,6 +21,12 @@ var ExampleView1 = Backbone.View.extend({
   initialize: function () {
     debugger;
     
+    
+  },
+
+  render: function () {
+    debugger;
+
     //Get the template associated with this view.
     $.getScript(ExampleTemplate1, function(data, textStatus, jqxhr) {
       debugger;
@@ -30,11 +36,7 @@ var ExampleView1 = Backbone.View.extend({
     .fail(function( jqxhr, settings, exception ) {
       debugger;
     });
-  },
-
-  render: function () {
-    debugger;
-
+    
     this.$el.html(this.template);
 
     this.$el.show();
