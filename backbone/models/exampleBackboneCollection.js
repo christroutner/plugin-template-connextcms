@@ -1,6 +1,7 @@
 
 //Create an empty Collection to hold all the posts.
 var ExampleCollection = Backbone.Collection.extend({ //Collection Class
+  
   model: ExampleModel,
   //url: 'http://'+global.serverIp+':'+global.serverPort+'/api/pagesection/list',
   url: '',
