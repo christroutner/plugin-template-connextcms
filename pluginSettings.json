@@ -11,12 +11,12 @@
       "type": "get",
       "path": "/api/exampleplugin/list",
       "middleware": "keystone.middleware.api",
-      "function": "routes.api.exampleplugin.list"
+      "APIfunction": "routes.api.exampleplugin.list"
     },{
       "type": "all",
       "path": "/api/exampleplugin/create",
       "middleware": "keystone.middleware.api",
-      "function": "routes.api.exampleplugin.create"
+      "APIfunction": "routes.api.exampleplugin.create"
     }
   ]
 
