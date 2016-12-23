@@ -43,6 +43,25 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
 
 
 
+// ---BEGIN BACKBONE MODELS---
+$.getScript(pluginDir+'backbone/models/exampleBackboneModel.js', function(data, textStatus, jqxhr) {
+  global.exampleModel = new ExampleModel();
+})
+.fail(function( jqxhr, settings, exception ) {
+  debugger;
+});
+
+$.getScript(pluginDir+'backbone/models/exampleBackboneCollection.js', function(data, textStatus, jqxhr) {
+  global.exampleCollection = new ExampleCollection();
+})
+.fail(function( jqxhr, settings, exception ) {
+  debugger;
+});
+
+// ---END BACKBONE MODELS---
+
+
+
 // ---BEGIN LEFT MENU---
 
 var pluginLi = global.leftMenuView.$el.find('#plugin-link');
