@@ -1,10 +1,24 @@
 {
 
-    "pluginDirName": "plugin-template-connextcms",
-    
-    "backboneTemplates": ["backbone/templates/exampleTemplate1.html","backbone/templates/exampleTemplate2.html"],
-    "backboneViews": ["backbone/views/exampleView1.js","backbone/views/exampleView2.js"],
-    "backboneModels": ["backbone/models/exampleModel1.js","backbone/models/exampleModel2.js"]
+  "pluginDirName": "plugin-template-connextcms",
+
+  "backboneTemplates": ["backbone/templates/exampleTemplate1.html","backbone/templates/exampleTemplate2.html"],
+  "backboneViews": ["backbone/views/exampleView1.js","backbone/views/exampleView2.js"],
+  "backboneModels": ["backbone/models/exampleModel1.js","backbone/models/exampleModel2.js"],
+  
+  "routes": [
+    {
+      "type": "get",
+      "path": "/api/exampleplugin/list",
+      "middleware": "keystone.middleware.api",
+      "function": "routes.api.exampleplugin.list"
+    },{
+      "type": "all",
+      "path": "/api/exampleplugin/create",
+      "middleware": "keystone.middleware.api",
+      "function": "routes.api.exampleplugin.create"
+    }
+  ]
 
 }
 
