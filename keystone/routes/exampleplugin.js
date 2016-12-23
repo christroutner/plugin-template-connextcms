@@ -2,7 +2,7 @@ var async = require('async'),
 	keystone = require('keystone');
 
 
-var ExamplePluginModel = keystone.list('ExamplePlugin');
+var ExamplePluginModel = keystone.list('ExamplePluginModel');
 
 /**
  * List ExamplePluginModels
