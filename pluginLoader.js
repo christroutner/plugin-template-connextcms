@@ -53,6 +53,7 @@ $.getScript(pluginDir+'backbone/models/exampleBackboneModel.js', function(data, 
 
 $.getScript(pluginDir+'backbone/models/exampleBackboneCollection.js', function(data, textStatus, jqxhr) {
   global.exampleCollection = new ExampleCollection();
+  global.exampleCollection.fetch();
 })
 .fail(function( jqxhr, settings, exception ) {
   debugger;
