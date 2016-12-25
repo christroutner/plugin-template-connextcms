@@ -20,7 +20,7 @@ var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 
 //Load the individual views for this plugin.
 $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatus, jqxhr) {
-  //debugger;
+  debugger;
   
   //Create the new view.
   thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
