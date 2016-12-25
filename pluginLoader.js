@@ -1,4 +1,4 @@
-//debugger;
+debugger;
 
 //Add this plugin to the loadedPlugins array.
 var thisPlugin = new Object();
