@@ -88,6 +88,7 @@ var ExampleView1 = Backbone.View.extend({
       
       var scaffoldElem = this.$el.find('#pluginScaffold');
       var tmpElem = scaffoldElem.clone();
+      tmpElem.attr('id', '');
       
       tmpElem.find('.control-label').text('String '+i);
       tmpElem.find('.strInput').val(thisModel.get('entry'));
