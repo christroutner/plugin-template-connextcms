@@ -34,6 +34,8 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
   //Render the view
   //thisPlugin.exampleView1.render(pluginData);
   
+  loadModels();
+  
 })
 .fail(function( jqxhr, settings, exception ) {
   debugger;
@@ -44,23 +46,24 @@ $.getScript(pluginDir+'backbone/views/exampleView1.js', function(data, textStatu
 
 
 // ---BEGIN BACKBONE MODELS---
-$.getScript(pluginDir+'backbone/models/exampleBackboneModel.js', function(data, textStatus, jqxhr) {
-  global.exampleModel = new ExampleModel();
-  
-  //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
-  $.getScript(pluginDir+'backbone/models/exampleBackboneCollection.js', function(data, textStatus, jqxhr) {
-    global.exampleCollection = new ExampleCollection();
-    global.exampleCollection.fetch();
+function loadModels() {
+  $.getScript(pluginDir+'backbone/models/exampleBackboneModel.js', function(data, textStatus, jqxhr) {
+    global.exampleModel = new ExampleModel();
+
+    //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
+    $.getScript(pluginDir+'backbone/models/exampleBackboneCollection.js', function(data, textStatus, jqxhr) {
+      global.exampleCollection = new ExampleCollection();
+      global.exampleCollection.fetch();
+    })
+    .fail(function( jqxhr, settings, exception ) {
+      debugger;
+    });
+
   })
   .fail(function( jqxhr, settings, exception ) {
     debugger;
   });
-  
-})
-.fail(function( jqxhr, settings, exception ) {
-  debugger;
-});
-
+}
 
 
 // ---END BACKBONE MODELS---
