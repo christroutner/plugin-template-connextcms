@@ -84,7 +84,7 @@ var ExampleView1 = Backbone.View.extend({
     debugger;
     
     for(var i=0; i < global.exampleCollection.models.length; i++) {
-      var thisModel = global.exampleCollection.models[0];
+      var thisModel = global.exampleCollection.models[i];
       
       var scaffoldElem = this.$el.find('#pluginScaffold');
       var tmpElem = scaffoldElem.clone();
