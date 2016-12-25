@@ -41,7 +41,7 @@ var ExampleView1 = Backbone.View.extend({
   },
 
   render: function () {
-    debugger;
+    //debugger;
     
     //Hide all views.
     global.leftMenuView.hideAll();
@@ -53,6 +53,12 @@ var ExampleView1 = Backbone.View.extend({
     //Visually update the left menu to inidicate that this plugin view was selected.
     this.updateLeftMenuView();
     
+    //Fill in the View with any model data.
+    this.loadData();
+    
+    //Hide the delete button on the scaffolding template.
+    this.$el.find('#pluginScaffold').find('.delBtn').hide();
+    
     return this;
   },
 
@@ -60,7 +66,7 @@ var ExampleView1 = Backbone.View.extend({
   //This function is called by render(). It's responsible for maintinain visual consistency in the
   //left menu when the menu item for this plugin is selected.
   updateLeftMenuView: function() {
-    debugger;
+    //debugger;
     //Remove the 'active' class from the menu item, unless it's a treeview menu item.
     //(treeview) menu items will remove their active class in their click event.
     if( !global.leftMenuView.$el.find('.sidebar-menu').find('.active').hasClass('treeview') )
@@ -72,6 +78,22 @@ var ExampleView1 = Backbone.View.extend({
     $('#example1-link').addClass('active');
 
     $('#app-location').text('Plugin Example View');
+  },
+  
+  loadData: function() {
+    debugger;
+    
+    for(var i=0; i < global.exampleCollection.models.length; i++) {
+      var thisModel = global.exampleCollection.models[0];
+      
+      var scaffoldElem = this.$el.find('#pluginScaffold');
+      var tmpElem = scaffoldElem.clone();
+      
+      tmpElem.find('.control-label').text('String '+i);
+      tmpElem.find('.strInput').val(thisModel.get('entry'));
+      
+      this.$el.find('.form-horizontal').prepend(tmpElem);
+    }
   }
 
 
