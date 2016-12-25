@@ -1,7 +1,7 @@
 //debugger;
 
 
-//'use strict';
+//'use strict'; //Causes error trying to import ExampleView1 object into ConnextCMS.
 
 var ExampleTemplate1 = '/backbone/templates/exampleTemplate1.html';
 
