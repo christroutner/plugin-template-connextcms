@@ -9,7 +9,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
   //parse is called when data is returned from the server after a fetch() call.
   //Parse allows me to massage non-standard data before it is returned to the collection.
   parse: function(response) {
-    debugger;
+    //debugger;
 
     if(response.collection.length == 0) {
       log.push('Empty data returned by server when trying to retrieve ExampleModel collection. Most likely due to a new DB.');
@@ -23,7 +23,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
   refreshView: false,
 
   initialize: function() {
-    debugger;
+    //debugger;
     //This function is often used for debugging, so leave it here.
     //this.on('change', function(model) {
     //  debugger;
@@ -36,7 +36,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
     });
 
     this.on('reset', function() {
-      debugger;
+      //debugger;
 
       if(this.refreshView) {
         this.refreshView = false;

@@ -1,4 +1,4 @@
-debugger;
+//debugger;
 
 
 'use strict';
@@ -19,7 +19,7 @@ var ExampleView1 = Backbone.View.extend({
   },
 
   initialize: function () {
-    debugger;
+    //debugger;
     
     this.pluginData = this.options.pluginData;
     
@@ -28,7 +28,7 @@ var ExampleView1 = Backbone.View.extend({
     //Get the template associated with this view.
     var templatePath = '/plugins/'+this.pluginData.pluginDirName+ExampleTemplate1;
     $.get(templatePath, '', function(template) {
-      debugger;
+      //debugger;
       
       //Copy the contents of the template file into this views template object.
       thisView.template = _.template(template);
@@ -83,6 +83,6 @@ var ExampleView1 = Backbone.View.extend({
 
 
 
-debugger;
+//debugger;
 
 
