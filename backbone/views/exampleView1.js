@@ -80,21 +80,48 @@ var ExampleView1 = Backbone.View.extend({
     $('#app-location').text('Plugin Example View');
   },
   
+  //This function is called by render(). It populates the View with Model data retrieved from the Collection.
   loadData: function() {
     debugger;
+    
+    var scaffoldElem = this.$el.find('#pluginScaffold');
     
     for(var i=0; i < global.exampleCollection.models.length; i++) {
       var thisModel = global.exampleCollection.models[i];
       
-      var scaffoldElem = this.$el.find('#pluginScaffold');
+      //Clone the scaffolding element      
       var tmpElem = scaffoldElem.clone();
       tmpElem.attr('id', '');
       
+      //Populate the cloned element with information from the model
       tmpElem.find('.control-label').text('String '+i);
       tmpElem.find('.strInput').val(thisModel.get('entry'));
+      tmpElem.find('.addBtn').text('Update');
+      
+      //Add click functions tot he cloned element.
+      tmpElem.find('.addBtn').click([i], this.updateModel);
+      tmpElem.find('.delBtn').click([i], this.delModel);
       
       this.$el.find('.form-horizontal').prepend(tmpElem);
     }
+    
+    //Add a click event to the scaffolding element.
+    scaffoldElem.find('.addBtn').click(this.addStr);
+  },
+  
+  //This function is called whenever the user clicks on the 'Update' button next to a model listing.
+  updateModel: function(event) {
+    debugger;
+  },
+  
+  //This function is called whenever the user clicks ont he 'Delete' button next to a model listing.
+  delModel: function(event) {
+    debugger;
+  },
+  
+  //This function is called when the user clicks the 'Add' button next to the scaffolding element.
+  addStr: function() {
+    debugger;
   }
 
 
