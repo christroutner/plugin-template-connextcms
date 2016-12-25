@@ -112,16 +112,32 @@ var ExampleView1 = Backbone.View.extend({
   //This function is called whenever the user clicks on the 'Update' button next to a model listing.
   updateModel: function(event) {
     debugger;
+    
+    var modelIndex = event.data[0];
   },
   
   //This function is called whenever the user clicks ont he 'Delete' button next to a model listing.
   delModel: function(event) {
     debugger;
+    
+    var modelIndex = event.data[0];
   },
   
   //This function is called when the user clicks the 'Add' button next to the scaffolding element.
   addStr: function() {
     debugger;
+    
+    var scaffoldElem = this.$el.find('#pluginScaffold');
+    
+    var obj = new Object();
+    obj.entry = scaffoldElem.find('.strInput').val();
+    
+    $.post('/api/exampleplugin/create', obj, function(data) {
+      debugger;
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+            debugger;
+    });
   }
 
 
