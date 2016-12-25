@@ -19,7 +19,7 @@ var ExampleView1 = Backbone.View.extend({
   },
 
   initialize: function () {
-    //debugger;
+    debugger;
     
     this.pluginData = this.options.pluginData;
     
