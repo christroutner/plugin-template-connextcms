@@ -1,7 +1,7 @@
-debugger;
+//debugger;
 
 
-'use strict';
+//'use strict';
 
 var ExampleTemplate1 = '/backbone/templates/exampleTemplate1.html';
 
