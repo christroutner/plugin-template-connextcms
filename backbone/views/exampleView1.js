@@ -134,6 +134,9 @@ var ExampleView1 = Backbone.View.extend({
     
     $.post('/api/exampleplugin/create', obj, function(data) {
       debugger;
+      
+      global.exampleCollection.refreshView = true;
+      global.exampleCollection.fetch();
     })
     .fail(function( jqxhr, textStatus, error ) {
             debugger;
