@@ -127,7 +127,9 @@ var ExampleView1 = Backbone.View.extend({
   addStr: function() {
     debugger;
     
-    var scaffoldElem = this.$el.find('#pluginScaffold');
+    var thisView = global.pluginView.exampleView1;
+    
+    var scaffoldElem = thisView.$el.find('#pluginScaffold');
     
     var obj = new Object();
     obj.entry = scaffoldElem.find('.strInput').val();
