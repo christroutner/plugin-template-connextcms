@@ -135,7 +135,7 @@ var ExampleView1 = Backbone.View.extend({
     var thisModel = global.exampleCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
-    $.post('/api/exampleplugin/'+thisModelId+'/remove', '', function(data) {
+    $.get('/api/exampleplugin/'+thisModelId+'/remove', '', function(data) {
       debugger;
       
       if(!data.success)
