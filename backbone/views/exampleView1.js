@@ -86,6 +86,7 @@ var ExampleView1 = Backbone.View.extend({
     
     var scaffoldElem = this.$el.find('#pluginScaffold');
     
+    //Loop through all the Models in the Collection.
     for(var i=0; i < global.exampleCollection.models.length; i++) {
       var thisModel = global.exampleCollection.models[i];
       
@@ -102,6 +103,7 @@ var ExampleView1 = Backbone.View.extend({
       tmpElem.find('.addBtn').click([i], this.updateModel);
       tmpElem.find('.delBtn').click([i], this.delModel);
       
+      //Add the cloned element to the DOM.
       this.$el.find('.form-horizontal').prepend(tmpElem);
     }
     
@@ -113,15 +115,19 @@ var ExampleView1 = Backbone.View.extend({
   updateModel: function(event) {
     debugger;
     
+    //Get a handle on the selected model.
     var modelIndex = event.data[0];
     var thisModel = global.exampleCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
+    //Get a handle on this view.
     var thisView = global.pluginView.exampleView1;
     
+    //Retrieve the updated string.
     var newStr = thisView.$el.find('#model'+modelIndex).find('.strInput').val();
     thisModel.set('entry', newStr);
     
+    //Persist the updated model to the server.
     thisModel.refreshView = true;
     thisModel.save();
     
@@ -131,13 +137,16 @@ var ExampleView1 = Backbone.View.extend({
   delModel: function(event) {
     debugger;
     
+    //Get a handle on the selected model.
     var modelIndex = event.data[0];
     var thisModel = global.exampleCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
+    //Delete the model on the server.
     $.get('/api/exampleplugin/'+thisModelId+'/remove', '', function(data) {
       debugger;
       
+      //Error Handling.
       if(!data.success) {
         console.error('Error deleting example plugin model '+thisModelId);
         return;
@@ -170,13 +179,17 @@ var ExampleView1 = Backbone.View.extend({
   addStr: function() {
     debugger;
     
+    //Get a handle on this view.
     var thisView = global.pluginView.exampleView1;
     
+    //Get a handle on the scaffold element
     var scaffoldElem = thisView.$el.find('#pluginScaffold');
     
+    //Create a new model.
     var obj = new Object();
     obj.entry = scaffoldElem.find('.strInput').val();
     
+    //Submit the new model to the server.
     $.post('/api/exampleplugin/create', obj, function(data) {
       debugger;
       
@@ -206,10 +219,5 @@ var ExampleView1 = Backbone.View.extend({
 
 
 
-
-
-
-
-//debugger;
 
 

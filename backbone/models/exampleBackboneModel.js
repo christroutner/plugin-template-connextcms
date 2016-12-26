@@ -32,14 +32,15 @@ var ExampleModel = Backbone.Model.extend({
 
   //Override the default Backbone save() function with one that our API understands.
   save: function() {
-    debugger;
+    //debugger;
 
     var thisModel = this;
     
     $.getJSON(this.url, this.attributes, function(data) {
       //Regardless of success or failure, the API returns the JSON data of the model that was just updated.
-      debugger;
+      //debugger;
       
+      //If the refreshView flag is set, then refresh the Collection and then refresh the View.
       if(thisModel.refreshView) {
         thisModel.refreshView = false;
         global.exampleCollection.refreshView = true;
