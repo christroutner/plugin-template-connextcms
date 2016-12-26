@@ -119,7 +119,7 @@ var ExampleView1 = Backbone.View.extend({
     
     var thisView = global.pluginView.exampleView1;
     
-    var newStr = thisView.find('#model'+modelIndex).find('.strInput').val();
+    var newStr = thisView.$el.find('#model'+modelIndex).find('.strInput').val();
     thisModel.set('entry', newStr);
     
     thisModel.refreshView = true;
