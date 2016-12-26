@@ -20,7 +20,7 @@ var ExampleModel = Backbone.Model.extend({
     //});
     //debugger;
 
-    this.url = '/api/post/'+this.id+'/update';
+    this.url = '/api/exampleplugin/'+this.id+'/update';
     
     this.refreshView = false;
   },
