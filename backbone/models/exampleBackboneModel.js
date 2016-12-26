@@ -21,6 +21,8 @@ var ExampleModel = Backbone.Model.extend({
     //debugger;
 
     this.url = '/api/post/'+this.id+'/update';
+    
+    this.refreshView = false;
   },
 
   defaults: {
@@ -32,9 +34,18 @@ var ExampleModel = Backbone.Model.extend({
   save: function() {
     debugger;
 
+    var thisModel = this;
+    
     $.getJSON(this.url, this.attributes, function(data) {
       //Regardless of success or failure, the API returns the JSON data of the model that was just updated.
-      //debugger;
+      debugger;
+      
+      if(thisModel.refreshView) {
+        thisModel.refreshView = false;
+        global.exampleCollection.refreshView = true;
+        global.exampleCollection.fetch();
+      }
+      
       log.push('exampleBackboneModel.js/save() executed.');
 
     }).error( function(err) {

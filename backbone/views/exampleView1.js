@@ -91,7 +91,7 @@ var ExampleView1 = Backbone.View.extend({
       
       //Clone the scaffolding element      
       var tmpElem = scaffoldElem.clone();
-      tmpElem.attr('id', '');
+      tmpElem.attr('id', 'model'+i);
       
       //Populate the cloned element with information from the model
       tmpElem.find('.control-label').text('String '+i);
@@ -114,6 +114,17 @@ var ExampleView1 = Backbone.View.extend({
     debugger;
     
     var modelIndex = event.data[0];
+    var thisModel = global.exampleCollection.models[modelIndex];
+    var thisModelId = thisModel.get('id');
+    
+    var thisView = global.pluginView.exampleView1;
+    
+    var newStr = thisView.find('#model'+modelIndex).find('.strInput').val();
+    thisModel.set('entry', newStr);
+    
+    thisModel.refreshView = true;
+    thisModel.save();
+    
   },
   
   //This function is called whenever the user clicks ont he 'Delete' button next to a model listing.
@@ -121,6 +132,31 @@ var ExampleView1 = Backbone.View.extend({
     debugger;
     
     var modelIndex = event.data[0];
+    var thisModel = global.exampleCollection.models[modelIndex];
+    var thisModelId = thisModel.get('id');
+    
+    $.post('/api/exampleplugin/'+thisModelId+'/remove', '', function(data) {
+      debugger;
+      
+      if(!data.success)
+        console.error('Error deleting example plugin model '+thisModelId);
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      debugger;
+      
+      try {
+        if(jqxhr.responseJSON.detail == "invalid csrf") {
+          global.modalView.errorModal('Update failed due to a bad CSRF token. Please log out and back in to refresh your CSRF token.');
+          return;
+        } else {
+          global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
+          console.log( "Request Failed: " + error );
+          console.error('Error message: '+jqxhr.responseText);
+        }
+      } catch(err) {
+        console.error('Error trying to retrieve JSON data from server response.');
+      } 
+    });
   },
   
   //This function is called when the user clicks the 'Add' button next to the scaffolding element.
@@ -141,7 +177,20 @@ var ExampleView1 = Backbone.View.extend({
       global.exampleCollection.fetch();
     })
     .fail(function( jqxhr, textStatus, error ) {
-            debugger;
+      debugger;
+      
+      try {
+        if(jqxhr.responseJSON.detail == "invalid csrf") {
+          global.modalView.errorModal('Update failed due to a bad CSRF token. Please log out and back in to refresh your CSRF token.');
+          return;
+        } else {
+          global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
+          console.log( "Request Failed: " + error );
+          console.error('Error message: '+jqxhr.responseText);
+        }
+      } catch(err) {
+        console.error('Error trying to retrieve JSON data from server response.');
+      } 
     });
   }
 
