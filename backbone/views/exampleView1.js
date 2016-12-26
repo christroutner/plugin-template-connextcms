@@ -138,8 +138,15 @@ var ExampleView1 = Backbone.View.extend({
     $.get('/api/exampleplugin/'+thisModelId+'/remove', '', function(data) {
       debugger;
       
-      if(!data.success)
+      if(!data.success) {
         console.error('Error deleting example plugin model '+thisModelId);
+        return;
+      }
+      
+      //Refresh the Collection and View.
+      global.exampleCollection.refreshView = true;
+      global.exampleCollection.fetch();
+      
     })
     .fail(function( jqxhr, textStatus, error ) {
       debugger;
