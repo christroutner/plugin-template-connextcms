@@ -12,24 +12,23 @@ This script assumes you are using a [ConnextCMS installation best practices](htt
 
 
 ## File Structure
-    |--keystone
+    |--keystone/
     |  This is where the KeystoneJS specific files live.
-    |  |--models
+    |  |--models/
     |  |  Add any KeystoneJS models that your plugin needs to this directory.
-    |  |--routes
+    |  |--routes/
     |  |  This directory contains the handlers for any new APIs
-    |  |  |
     |  |  |--exampleRouter.js
     |  |  |  This file be ready by KeystoneJS and any new API paths with be added the KeystoneJS router.
     |  |  |--exampleplugin.js
     |  |  |  This is a demo/example API handler file.
-    |--connextcms
+    |--connextcms/
     |  This is where ConnextCMS specific files live.
-    |  |--models
+    |  |--models/
     |  |  Contains Backbone.js Models and Collections that will be used by the ConnextCMS Backbone application.
-    |  |--views
+    |  |--views/
     |  |  Contains Backbone.js Views that will be added to the ConnextCMS Dashboard.
-    |  |--templates
+    |  |--templates/
     |  |  Contains HTML template files used by ConnextCMS Backbone.js Views.
     |--pluginSettings.json
     |  JSON file containing the information ConnextCMS needs to interface to the plugin
@@ -74,6 +73,12 @@ in the `templates/views` directory.
 In many ways KeystoneJS Models act as an API to MongoDB, the database used to power KeystoneJS. Read up on the 
 [KeystoneJS model documentation](http://keystonejs.com/docs/database/) for more information.
 
+Any model files in this directory with the same name default KeystoneJS or ConnextCMS model files will overwrite
+those default files. This is usefully if you need to add a field to an existing model. For example, if you need
+to add a field called 'middleName' to the User model, just copy the default User.js model from KeystoneJS 
+and place it in this directory, and add your field. You updated model will overwrite the default model when the
+`merge-plugin` script is executed.
+
 
 ## ConnextCMS
 [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS) is a Backbone.js application and front end
@@ -98,3 +103,26 @@ By storing data in Backbone Models and Collections, data can be managed more eff
 Backbone application server are reduced. 
 
 
+## Support Files
+The support files `merge-plugin`, `pluginLoader.js`, and `pluginSettings.json` are used to configure your plugin.
+
+`merge-plugin` is a bash script file that places your plugin files in the appropriate location, according to
+[ConnextCMS installation best practices](https://github.com/skagitpublishing/ConnextCMS/wiki/2.-Installation#installation-best-practice).
+
+`pluginSettings.json` is a configuration file used by ConnextCMS to figure out which files need to be loaded. 
+This file is not used by KeystoneJS.
+
+`pluginLoader.js` is executed by ConnextCMS Dashboard on page load. It dynamically loads the plugin Backbone View
+and Models. It also adds the plugin to the Left Menu View. This file is not used by KeystoneJS.
+
+
+## Summary/Usage
+Because this plugin is effectively interfacing with two separate pieces of software (*KeystoneJS* and *ConnextCMS*), it's
+possible to use this template to build plugins for just one piece of software or both.
+
+If you have no interest in building a ConnextCMS extention, simply ignore the `connextcms` directory. You can create
+KeystoneJS routes, views, and models without any interaction with ConnextCMS.
+
+If you wish to build another view or menu item for ConnextCMS, you may not need to develop any code in the `keystone`
+directory. However, you will need to develop new KeystoneJS routes and models if you need to put any new information 
+into the database or create a new API for interacting with that data.
