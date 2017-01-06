@@ -1,12 +1,19 @@
-debugger;
+//debugger;
 
 
 //Get a local copy of the JSON settings for this plugin.
-var pluginData = global.pluginView.pluginData;
+//Loop through all the loaded plugins until we find the one matches this plugin.
+//Copy the JSON data for this plugin into local variable pluginData.
+for(var i=0; i < global.pluginView.pluginData.length; i++) {
+  var pluginData = global.pluginView.pluginData[i];
+  if(pluginData.pluginDirName == 'plugin-template-connextcms') {
+    break;
+  }
+}
 
 //'use strict'; //Causes error trying to import ExampleView1 object into ConnextCMS.
 
-var ExampleTemplate1 = '/backbone/templates/exampleTemplate1.html';
+var ExampleTemplate1 = pluginData.backboneTemplates[0];
 
 var ExampleView1 = Backbone.View.extend({
 
