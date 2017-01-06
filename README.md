@@ -1,7 +1,63 @@
 # connextcms-plugin-template
-This is a template for developing your own plugins for [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS).
+This is a template for developing your own plugins for [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS)
+and [KeystoneJS](https://github.com/keystonejs/keystone).
 
 This repository is actively being developed. It is not ready for general use yet. 
+
+## Installation
+It is assumed that this repository will be cloned into a working copy of [ConnextCMS](http://connextcms.com/). 
+You can [clone your own working copy of ConnextCMS](http://connextcms.com/page/clone-your-own) for testing purposes.
+
+## File Structure
+    |--keystone
+    |  This is where the KeystoneJS specific files live.
+    |  |--models
+    |  |  Add any KeystoneJS models that your plugin needs to this directory.
+    |  |--routes
+    |  |  This directory contains the handlers for any new APIs
+    |  |  |
+    |  |  |--exampleRouter.js
+    |  |  |  This file be ready by KeystoneJS and any new API paths with be added the KeystoneJS router.
+    |  |  |--exampleplugin.js
+    |  |  |  This is a demo/example API handler file.
+    |--connextcms
+    |  This is where ConnextCMS specific files live.
+    |  |--models
+    |  |  Contains Backbone.js Models and Collections that will be used by the ConnextCMS Backbone application.
+    |  |--views
+    |  |  Contains Backbone.js Views that will be added to the ConnextCMS Dashboard.
+    |  |--templates
+    |  |  Contains HTML template files used by ConnextCMS Backbone.js Views.
+    |--myCMS
+    |  This directory contains the working code.
+    |  |--keystone.js
+    |  |  This is the file you execute to get ConnextCMS up and running with the command `node keystone.js`
+
+## Design Overview
+ConnextCMS now has hooks to allow the development of plugins. Plugins allow new websites and web apps to
+develop their code base totally independent of ConnextCMS's code base. ConnextCMS software and plugin
+code can be be updated without any manual editing. This plugin template has been developed for two reasons:
+
+1. To give an example on how JavaScript developers can create their own ConnextCMS/KeystoneJS plugins.
+
+2. To illustrate the various interfaces between KeystoneJS and ConnextCMS. To show where and how the two systems interact and where they are independent.
+
+## KeystoneJS
+
+### Keystone Routes
+
+### Keystone Views
+
+### Keystone Models
+
+## ConnextCMS
+
+### Backbone Views
+
+### Backbone Models & Collections
+
+
+
 
 # Plugin & New Site Considerations
 The main things that a plugin or new site will need to modify on a ConnextCMS install is:
