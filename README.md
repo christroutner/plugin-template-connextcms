@@ -2,11 +2,14 @@
 This is a template for developing your own plugins for [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS)
 and [KeystoneJS](https://github.com/keystonejs/keystone).
 
-This repository is actively being developed. It is not ready for general use yet. 
-
 ## Installation
 It is assumed that this repository will be cloned into a working copy of [ConnextCMS](http://connextcms.com/). 
 You can [clone your own working copy of ConnextCMS](http://connextcms.com/page/clone-your-own) for testing purposes.
+
+To install this example project, clone this repository into your home directory and run the `merge-plugin` script.
+
+This script assumes you are using a [ConnextCMS installation best practices](https://github.com/skagitpublishing/ConnextCMS/wiki/2.-Installation#installation-best-practice).
+
 
 ## File Structure
     |--keystone
@@ -28,10 +31,13 @@ You can [clone your own working copy of ConnextCMS](http://connextcms.com/page/c
     |  |  Contains Backbone.js Views that will be added to the ConnextCMS Dashboard.
     |  |--templates
     |  |  Contains HTML template files used by ConnextCMS Backbone.js Views.
-    |--myCMS
-    |  This directory contains the working code.
-    |  |--keystone.js
-    |  |  This is the file you execute to get ConnextCMS up and running with the command `node keystone.js`
+    |--pluginSettings.json
+    |  JSON file containing the information ConnextCMS needs to interface to the plugin
+    |--pluginLoader.js
+    |  Script executed by ConnextCMS when the Dashboard loads.
+    |--merge-plugin
+    |  Bash shell script for merging your plugin into a working installation of ConnextCMS
+`
 
 ## Design Overview
 ConnextCMS now has hooks to allow the development of plugins. Plugins allow new websites and web apps to
@@ -42,11 +48,22 @@ code can be be updated without any manual editing. This plugin template has been
 
 2. To illustrate the various interfaces between KeystoneJS and ConnextCMS. To show where and how the two systems interact and where they are independent.
 
+
 ## KeystoneJS
+Keystone has its own system for routing API calls, displaying views, and creating database models. ConnextCMS relies heavily on
+the API routes and interacts with database models through these APIs. The ConnextCMS dashboard is contained in a single 
+KeystoneJS view, but does not interact much with this part of KeystoneJS. This plugin template allows you to create 
+new KeystoneJS routes, views, and models as you see fit.
 
 ### Keystone Routes
+The API routes for this example plugin are defined in `exampleRouter.js`. This file gets read by the `routes/index.js` file
+when KeystoneJS starts.
+
+The API handler functions for this example plugin live in `exampleplugin.js`. This is the code that gets executed when your
+plugin API is called. 
 
 ### Keystone Views
+
 
 ### Keystone Models
 
