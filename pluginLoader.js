@@ -15,11 +15,17 @@ var pluginData = global.pluginView.pluginData[pluginIndex];
 var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 debugger;
 
+//Retrieve data from JSON settings file for use in the loading script below.
+var exampleModel = pluginData.backboneModels[0];
+var exampleCollection = pluginData.backboneModels[1];
+var exampleView = pluginData.backboneViews[0];
+
+
 
 // ---BEGIN BACKBONE VIEWS---
 
 //Load the individual views for this plugin.
-$.getScript(pluginDir+'connextcms/views/exampleView1.js', function(data, textStatus, jqxhr) {
+$.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
   //debugger;
   
   //Create the new view.
@@ -47,11 +53,11 @@ $.getScript(pluginDir+'connextcms/views/exampleView1.js', function(data, textSta
 
 // ---BEGIN BACKBONE MODELS---
 function loadModels() {
-  $.getScript(pluginDir+'connextcms/models/exampleBackboneModel.js', function(data, textStatus, jqxhr) {
+  $.getScript(pluginDir+exampleModel, function(data, textStatus, jqxhr) {
     global.exampleModel = new ExampleModel();
 
     //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
-    $.getScript(pluginDir+'connextcms/models/exampleBackboneCollection.js', function(data, textStatus, jqxhr) {
+    $.getScript(pluginDir+exampleCollection, function(data, textStatus, jqxhr) {
       global.exampleCollection = new ExampleCollection();
       global.exampleCollection.fetch();
     })

@@ -1,5 +1,8 @@
-//debugger;
+debugger;
 
+
+//Get a local copy of the JSON settings for this plugin.
+var pluginData = global.pluginView.pluginData;
 
 //'use strict'; //Causes error trying to import ExampleView1 object into ConnextCMS.
 
