@@ -12,3 +12,6 @@ echo Copying Keystone API Routes
 cp keystone/routes/exampleRouter.js ../myCMS/routes/
 cp keystone/routes/api/*.js ../myCMS/routes/api/
 cp keystone/routes/views/*.js ../myCMS/routes/views/
+
+echo Copying Keystone Views
+cp keystone/templates/views/*.hbs ../myCMS/templates/views/
