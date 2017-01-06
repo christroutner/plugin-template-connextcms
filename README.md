@@ -4,11 +4,9 @@ and [KeystoneJS](https://github.com/keystonejs/keystone).
 
 ## Installation
 It is assumed that this repository will be cloned into a working copy of [ConnextCMS](http://connextcms.com/). 
-You can [clone your own working copy of ConnextCMS](http://connextcms.com/page/clone-your-own) for testing purposes.
+You can [clone your own working copy of ConnextCMS here](http://connextcms.com/page/clone-your-own) for testing purposes.
 
-To install this example project, clone this repository into your home directory and run the `merge-plugin` script.
-
-This script assumes you are using a [ConnextCMS installation best practices](https://github.com/skagitpublishing/ConnextCMS/wiki/2.-Installation#installation-best-practice).
+To install this example project, clone this repository into your home directory and run the `merge-plugin` script. This script assumes you are using a [ConnextCMS installation best practices](https://github.com/skagitpublishing/ConnextCMS/wiki/2.-Installation#installation-best-practice).
 
 
 ## File Structure
@@ -19,7 +17,7 @@ This script assumes you are using a [ConnextCMS installation best practices](htt
     |  |--routes/
     |  |  This directory contains the handlers for any new APIs
     |  |  |--exampleRouter.js
-    |  |  |  This file be ready by KeystoneJS and any new API paths with be added the KeystoneJS router.
+    |  |  |  KeystoneJS reads this file to add new View and API paths to the KeystoneJS router.
     |  |  |--exampleplugin.js
     |  |  |  This is a demo/example API handler file.
     |--connextcms/
@@ -35,7 +33,7 @@ This script assumes you are using a [ConnextCMS installation best practices](htt
     |--pluginLoader.js
     |  Script executed by ConnextCMS when the Dashboard loads.
     |--merge-plugin
-    |  Bash shell script for merging your plugin into a working installation of ConnextCMS
+    |  Bash shell script for merging your plugin into a working installation of ConnextCMS and KeystoneJS
 
 
 ## Design Overview
