@@ -2,9 +2,8 @@
 
   "pluginDirName": "plugin-template-connextcms",
 
-  "backboneTemplates": ["backbone/templates/exampleTemplate1.html","backbone/templates/exampleTemplate2.html"],
-  "backboneViews": ["backbone/views/exampleView1.js","backbone/views/exampleView2.js"],
-  "backboneModels": ["backbone/models/exampleModel1.js","backbone/models/exampleModel2.js"]
+  "backboneTemplates": ["backbone/templates/exampleTemplate1.html"],
+  "backboneViews": ["backbone/views/exampleView1.js"]
 
 }
 
