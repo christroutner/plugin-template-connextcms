@@ -10,4 +10,5 @@ cp keystone/models/*.js ../myCMS/models/
 
 echo Copying Keystone API Routes
 cp keystone/routes/exampleRouter.js ../myCMS/routes/
-cp keystone/routes/exampleplugin.js ../myCMS/routes/api/
+cp keystone/routes/api/*.js ../myCMS/routes/api/
+cp keystone/routes/views/*.js ../myCMS/routes/views/
