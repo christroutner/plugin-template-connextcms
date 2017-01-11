@@ -20,6 +20,12 @@ To install this example project, clone this repository into your home directory 
     |  |  |  KeystoneJS reads this file to add new View and API paths to the KeystoneJS router.
     |  |  |--exampleplugin.js
     |  |  |  This is a demo/example API handler file.
+    |  |--templates/views/
+    |  |  This directory contains the KeystoneJS Views
+    |  |  |--test.hbs
+    |  |  |  This is an example KeystoneJS view.
+    |  |  |--loggedinuser.hbs
+    |  |  |  This is ane example KeystoneJS view that is only accessible to logged in users.
     |--connextcms/
     |  This is where ConnextCMS specific files live.
     |  |--models/
@@ -49,38 +55,43 @@ code can be be updated without any manual editing. This plugin template has been
 ## KeystoneJS
 Keystone has its own system for routing API calls, displaying views, and creating database models. ConnextCMS relies heavily on
 the API routes and interacts with database models through these APIs. The ConnextCMS dashboard is contained in a single 
-KeystoneJS view, but does not interact much with this part of KeystoneJS. This plugin template allows you to create 
+KeystoneJS view, but otherwise does not interact with any other KeystoneJS view. This plugin template allows you to create 
 new KeystoneJS routes, views, and models as you see fit.
 
 ### Keystone Routes
-The API routes for this example plugin are defined in `exampleRouter.js`. This file gets read by the `routes/index.js` file
-when KeystoneJS starts.
+The API *routes* for this example plugin are defined in `keystone/routes/exampleRouter.js`. This file gets read by Keystone's
+`routes/index.js` file when KeystoneJS starts.
 
-The API handler functions for this example plugin live in `exampleplugin.js`. This is the code that gets executed when your
-plugin API is called. 
+The API *handler* functions for this example plugin live in `keystone/routes/api/exampleplugin.js`. This is the code 
+that gets executed when your plugin API is called. 
 
 ### Keystone Views
-KeystoneJS is configured to use the Handlebar template language for its views. View files end with extension .hbs, but HTML can be
+In ConnextCMS, KeystoneJS is configured to use the [Handlebar template language](http://handlebarsjs.com/) for its views. 
+View files end with extension .hbs, but HTML can be
 copied and pasted into these files. The ConnextCMS Dashboard is single Keystone View configured for the path `/dashboard`. 
-The `/edituser` view which lets users change their password is another example of a Keystone View.
+The `/edituser` view which lets users change their password is another example of a Keystone View. 
 
-The route for Keystone Views are defined in the `routes/exampleRouter.js` file, but the website content is defined by the .hbs file
-in the `templates/views` directory.
+This plugin contains
+example views. `/test` is a publically accessible view and `/loggedinuser` is a private view, accessible only to logged
+in users.
+
+The route for Keystone Views are defined in the `keystone/routes/exampleRouter.js` file, but the website content is 
+defined by the .hbs file in the `keystone/templates/views` directory.
 
 ### Keystone Models
 In many ways KeystoneJS Models act as an API to MongoDB, the database used to power KeystoneJS. Read up on the 
 [KeystoneJS model documentation](http://keystonejs.com/docs/database/) for more information.
 
-Any model files in this directory with the same name default KeystoneJS or ConnextCMS model files will overwrite
-those default files. This is usefully if you need to add a field to an existing model. For example, if you need
+Any model files in this directory with the same name as default KeystoneJS or ConnextCMS model files will overwrite
+those default files. This is usefull if you need to add a field to an existing model. For example, if you need
 to add a field called 'middleName' to the User model, just copy the default User.js model from KeystoneJS 
-and place it in this directory, and add your field. You updated model will overwrite the default model when the
+and place it in this directory, and add your field. Your updated model will overwrite the default model when the
 `merge-plugin` script is executed.
 
 
 ## ConnextCMS
 [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS) is a Backbone.js application and front end
-extension for KeystoneJS. The user interface mimics popluar CMS UI such as WordPress and Shopify. This plugin
+extension for KeystoneJS. The user interface mimics other popluar CMS UI such as WordPress and Shopify. This plugin
 template allows you to create your own menu items and Backbone Views for extending both ConnextCMS and KeystoneJS.
 All plugin files that interact directly with ConnextCMS reside in the `connextcms` directory.
 
@@ -110,8 +121,8 @@ The support files `merge-plugin`, `pluginLoader.js`, and `pluginSettings.json` a
 `pluginSettings.json` is a configuration file used by ConnextCMS to figure out which files need to be loaded. 
 This file is not used by KeystoneJS.
 
-`pluginLoader.js` is executed by ConnextCMS Dashboard on page load. It dynamically loads the plugin Backbone View
-and Models. It also adds the plugin to the Left Menu View. This file is not used by KeystoneJS.
+`pluginLoader.js` is executed by ConnextCMS Dashboard on page load. It dynamically loads the plugin Backbone View,
+Models, and Collections. It also adds the plugin to the Left Menu View. This file is not used by KeystoneJS.
 
 
 ## Summary/Usage
