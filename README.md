@@ -1,3 +1,21 @@
+Table of Contents
+=================
+
+* [connextcms-plugin-template](#connextcms-plugin-template)
+  * [Installation](#installation)
+  * [File Structure](#file-structure)
+  * [Design Overview](#design-overview)
+  * [KeystoneJS](#keystonejs)
+     * [Keystone Routes](#keystone-routes)
+     * [Keystone Views](#keystone-views)
+     * [Keystone Models](#keystone-models)
+  * [ConnextCMS](#connextcms)
+     * [Backbone Views](#backbone-views)
+     * [Backbone Models &amp; Collections](#backbone-models--collections)
+  * [Support Files](#support-files)
+  * [Summary/Usage](#summaryusage)
+
+
 # connextcms-plugin-template
 This is a template for developing your own plugins for [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS)
 and [KeystoneJS](https://github.com/keystonejs/keystone).
