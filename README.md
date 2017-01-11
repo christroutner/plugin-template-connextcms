@@ -25,7 +25,7 @@ To install this example project, clone this repository into your home directory 
     |  |  |--test.hbs
     |  |  |  This is an example KeystoneJS view.
     |  |  |--loggedinuser.hbs
-    |  |  |  This is ane example KeystoneJS view that is only accessible to logged in users.
+    |  |  |  This is an example KeystoneJS view that is only accessible to logged in users.
     |--connextcms/
     |  This is where ConnextCMS specific files live.
     |  |--models/
@@ -45,7 +45,7 @@ To install this example project, clone this repository into your home directory 
 ## Design Overview
 ConnextCMS now has hooks to allow the development of plugins. Plugins allow new websites and web apps to
 develop their code base totally independent of ConnextCMS's code base. ConnextCMS software and plugin
-code can be be updated without any manual editing. This plugin template has been developed for two reasons:
+code can be updated without any manual editing. This plugin template has been developed for two reasons:
 
 1. To give an example on how JavaScript developers can create their own ConnextCMS/KeystoneJS plugins.
 
@@ -83,7 +83,7 @@ In many ways KeystoneJS Models act as an API to MongoDB, the database used to po
 [KeystoneJS model documentation](http://keystonejs.com/docs/database/) for more information.
 
 Any model files in this directory with the same name as default KeystoneJS or ConnextCMS model files will overwrite
-those default files. This is usefull if you need to add a field to an existing model. For example, if you need
+those default files. This is useful if you need to add a field to an existing model. For example, if you need
 to add a field called 'middleName' to the User model, just copy the default User.js model from KeystoneJS 
 and place it in this directory, and add your field. Your updated model will overwrite the default model when the
 `merge-plugin` script is executed.
@@ -91,7 +91,7 @@ and place it in this directory, and add your field. Your updated model will over
 
 ## ConnextCMS
 [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS) is a Backbone.js application and front end
-extension for KeystoneJS. The user interface mimics other popluar CMS UI such as WordPress and Shopify. This plugin
+extension for KeystoneJS. The user interface mimics other popular CMS UI such as WordPress and Shopify. This plugin
 template allows you to create your own menu items and Backbone Views for extending both ConnextCMS and KeystoneJS.
 All plugin files that interact directly with ConnextCMS reside in the `connextcms` directory.
 
@@ -105,7 +105,7 @@ the code for loading plugin view files as well as creating a menu item in the Le
 
 ### Backbone Models & Collections
 The Backbone Models and Collections used in ConnextCMS often mirror the KeystoneJS models. While the KeystoneJS models
-perist in a MongoDB database on the server, the Backbone Models and Collections exist in the memory space of the browser.
+persist in a MongoDB database on the server, the Backbone Models and Collections exist in the memory space of the browser.
 They sync with the server via KeystoneJS API calls. 
 
 By storing data in Backbone Models and Collections, data can be managed more efficiently and API calls between the
@@ -129,7 +129,7 @@ Models, and Collections. It also adds the plugin to the Left Menu View. This fil
 Because this plugin is effectively interfacing with two separate pieces of software (*KeystoneJS* and *ConnextCMS*), it's
 possible to use this template to build plugins for just one piece of software or both.
 
-If you have no interest in building a ConnextCMS extention, simply ignore the `connextcms` directory. You can create
+If you have no interest in building a ConnextCMS extension, simply ignore the `connextcms` directory. You can create
 KeystoneJS routes, views, and models without any interaction with ConnextCMS.
 
 If you wish to build another view or menu item for ConnextCMS, you may not need to develop any code in the `keystone`
