@@ -145,7 +145,7 @@ var ExampleView1 = Backbone.View.extend({
   
   //This function is called whenever the user clicks ont he 'Delete' button next to a model listing.
   delModel: function(event) {
-    debugger;
+    //debugger;
     
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
@@ -154,7 +154,7 @@ var ExampleView1 = Backbone.View.extend({
     
     //Delete the model on the server.
     $.get('/api/exampleplugin/'+thisModelId+'/remove', '', function(data) {
-      debugger;
+      //debugger;
       
       //Error Handling.
       if(!data.success) {
@@ -187,7 +187,7 @@ var ExampleView1 = Backbone.View.extend({
   
   //This function is called when the user clicks the 'Add' button next to the scaffolding element.
   addStr: function() {
-    debugger;
+    //debugger;
     
     //Get a handle on this view.
     var thisView = global.pluginView.exampleView1;
@@ -201,7 +201,7 @@ var ExampleView1 = Backbone.View.extend({
     
     //Submit the new model to the server.
     $.post('/api/exampleplugin/create', obj, function(data) {
-      debugger;
+      //debugger;
       
       global.exampleCollection.refreshView = true;
       global.exampleCollection.fetch();
