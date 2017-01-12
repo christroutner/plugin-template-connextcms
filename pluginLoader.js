@@ -13,7 +13,6 @@ global.pluginView.pluginData[pluginIndex].pluginIndex = pluginIndex;
 //Get a local copy of the JSON settings for this plugin.
 var pluginData = global.pluginView.pluginData[pluginIndex];
 var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
-debugger;
 
 //Retrieve data from JSON settings file for use in the loading script below.
 var exampleModel = pluginData.backboneModels[0];
