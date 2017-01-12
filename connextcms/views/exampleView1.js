@@ -92,7 +92,7 @@ var ExampleView1 = Backbone.View.extend({
   
   //This function is called by render(). It populates the View with Model data retrieved from the Collection.
   loadData: function() {
-    debugger;
+    //debugger;
     
     var scaffoldElem = this.$el.find('#pluginScaffold');
     
@@ -123,7 +123,7 @@ var ExampleView1 = Backbone.View.extend({
   
   //This function is called whenever the user clicks on the 'Update' button next to a model listing.
   updateModel: function(event) {
-    debugger;
+    //debugger;
     
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
