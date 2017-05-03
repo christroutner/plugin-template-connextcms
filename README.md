@@ -18,7 +18,8 @@ Table of Contents
 
 # connextcms-plugin-template
 This is a template for developing your own plugins for [ConnextCMS](https://github.com/skagitpublishing/ConnextCMS)
-and [KeystoneJS](https://github.com/keystonejs/keystone).
+and [KeystoneJS](https://github.com/keystonejs/keystone). If all you need is to customize a website served
+with KeystoneJS, consider using the simplified [site template](https://github.com/skagitpublishing/site-template-connextcms).
 
 ## Installation
 It is assumed that this repository will be cloned into a working copy of [ConnextCMS](http://connextcms.com/). 
