@@ -1,5 +1,11 @@
 debugger;
 
+// BEGIN PLUGIN CUSTOMIZATION
+// Customize this plugin by changing the variables below.
+
+// END PLUGIN CUSTOMIZATION
+
+//BEGIN BOILER PLATE CODE - DO NOT CHANGE CODE BELOW THIS LINE
 //Add this plugin to the loadedPlugins array.
 var thisPlugin = new Object();
 thisPlugin.views = [];
@@ -15,17 +21,59 @@ var pluginData = global.pluginView.pluginData[pluginIndex];
 var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 
 //Retrieve data from JSON settings file for use in the loading script below.
+//THIS CODE TO BE REMOVED
 var exampleModel = pluginData.backboneModels[0];
-var exampleCollection = pluginData.backboneModels[1];
+var exampleCollection = pluginData.backboneCollections[1];
 var exampleView = pluginData.backboneViews[0];
 
+//Pull the Backbone model, collection, and view filename from the JSON settings.
+var thisPlugin = {};
+thisPlugin.modelFiles = pluginData.backboneModelFiles;
+thisPlugin.modelNames = pluginData.backboneModelNames;
+thisPlugin.collectionFiles = pluginData.backboneCollectionFiles;
+thisPlugin.collectionNames = pluginData.backboneCollectionNames;
+thisPlugin.viewFiles = pluginData.backboneViewFiles;
+thisPlugin.viewNames = pluginData.backboneViewNames;
+thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
+
+
+// ---BEGIN BACKBONE MODELS---
+function loadModels() {
+  debugger;
+  
+  //Loop through each of the backbone models for this plugin
+  for(var i=0; i < thisPlugin.modelFiles.length; i++) {
+    
+    $.getScript(pluginDir+thisPlugin.modelFiles[i], function(data, textStatus, jqxhr) {
+      //global.exampleModel = new ExampleModel();
+      global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
+
+      //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
+      /*
+      $.getScript(pluginDir+exampleCollection, function(data, textStatus, jqxhr) {
+        global.exampleCollection = new ExampleCollection();
+        global.exampleCollection.fetch();
+      })
+      .fail(function( jqxhr, settings, exception ) {
+        debugger;
+      });
+      */
+
+    })
+    .fail(function( jqxhr, settings, exception ) {
+      debugger;
+    });
+  }
+  
+}
+// ---END BACKBONE MODELS---
 
 
 // ---BEGIN BACKBONE VIEWS---
 
 //Load the individual views for this plugin.
 $.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
-  //debugger;
+  debugger;
   
   //Create the new view.
   thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
@@ -50,28 +98,7 @@ $.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
 
 
 
-// ---BEGIN BACKBONE MODELS---
-function loadModels() {
-  $.getScript(pluginDir+exampleModel, function(data, textStatus, jqxhr) {
-    global.exampleModel = new ExampleModel();
 
-    //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
-    $.getScript(pluginDir+exampleCollection, function(data, textStatus, jqxhr) {
-      global.exampleCollection = new ExampleCollection();
-      global.exampleCollection.fetch();
-    })
-    .fail(function( jqxhr, settings, exception ) {
-      debugger;
-    });
-
-  })
-  .fail(function( jqxhr, settings, exception ) {
-    debugger;
-  });
-}
-
-
-// ---END BACKBONE MODELS---
 
 
 
@@ -86,3 +113,5 @@ pluginLi.parent().append(tmpLi);
 
 
 // ---BEGIN LEFT MENU---
+
+//END BOILER PLATE CODE - DO NOT CHANGE CODE ABOVE THIS LINE

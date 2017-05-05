@@ -2,9 +2,14 @@
 
   "pluginDirName": "plugin-template-connextcms",
 
-  "backboneTemplates": ["connextcms/templates/exampleTemplate1.html"],
-  "backboneViews": ["connextcms/views/exampleView1.js"],
-  "backboneModels": ["connextcms/models/exampleBackboneModel.js", "connextcms/models/exampleBackboneCollection.js"]
+  "backboneTemplateFiles": ["connextcms/templates/exampleTemplate1.html"],
+  "backboneViewFiles": ["connextcms/views/exampleView1.js"],
+  "backboneModelFiles": ["connextcms/models/exampleBackboneModel.js"],
+  "backboneCollectionFiles": ["connextcms/models/exampleBackboneCollection.js"],
+  
+  "backboneViewNames": ["ExampleView1"],
+  "backboneModelNames": ["ExampleModel"],
+  "backboneCollectionNames": ["ExampleCollection"]
 
 }
 
