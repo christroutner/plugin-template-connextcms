@@ -22,9 +22,9 @@ var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 
 //Retrieve data from JSON settings file for use in the loading script below.
 //THIS CODE TO BE REMOVED
-var exampleModel = pluginData.backboneModels[0];
-var exampleCollection = pluginData.backboneCollections[1];
-var exampleView = pluginData.backboneViews[0];
+//var exampleModel = pluginData.backboneModels[0];
+//var exampleCollection = pluginData.backboneCollections[1];
+//var exampleView = pluginData.backboneViews[0];
 
 //Pull the Backbone model, collection, and view filename from the JSON settings.
 var thisPlugin = {};
