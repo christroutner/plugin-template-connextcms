@@ -37,6 +37,39 @@ thisPlugin.viewNames = pluginData.backboneViewNames;
 thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 
 
+// ---BEGIN BACKBONE VIEWS---
+
+//Loop through each of the backbone views for this plugin
+for(var i=0; i < thisPlugin.viewFiles.length; i++) {
+
+  //Load the individual views for this plugin.
+  $.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
+    debugger;
+
+    //Create the new view.
+    //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
+    global.pluginView.pluginData[pluginIndex].BackboneView[i] = 
+      new thisPlugin.viewNames[i]({el: $(pluginData.divId), pluginData: pluginData });
+    
+    //Create a global reference to this view.
+    //global.pluginView.exampleView1 = thisPlugin.exampleView1;
+
+    //Add this view to the loadedPlugins.views[] array.
+    thisPlugin.views.push(thisPlugin.exampleView1);
+
+    //Render the view
+    //thisPlugin.exampleView1.render(pluginData);
+
+    loadModels();
+
+  })
+  .fail(function( jqxhr, settings, exception ) {
+    debugger;
+  });
+}
+// ---END BACKBONE VIEWS---
+
+
 // ---BEGIN BACKBONE MODELS---
 function loadModels() {
   debugger;
@@ -54,6 +87,7 @@ function loadModels() {
         global.exampleCollection = new ExampleCollection();
         global.exampleCollection.fetch();
       })
+      
       .fail(function( jqxhr, settings, exception ) {
         debugger;
       });
@@ -69,32 +103,7 @@ function loadModels() {
 // ---END BACKBONE MODELS---
 
 
-// ---BEGIN BACKBONE VIEWS---
-/*
-//Load the individual views for this plugin.
-$.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
-  debugger;
-  
-  //Create the new view.
-  thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
-  
-  //Create a global reference to this view.
-  global.pluginView.exampleView1 = thisPlugin.exampleView1;
-  
-  //Add this view to the loadedPlugins.views[] array.
-  thisPlugin.views.push(thisPlugin.exampleView1);
-  
-  //Render the view
-  //thisPlugin.exampleView1.render(pluginData);
-  
-  loadModels();
-  
-})
-.fail(function( jqxhr, settings, exception ) {
-  debugger;
-});
-*/
-// ---END BACKBONE VIEWS---
+
 
 
 
