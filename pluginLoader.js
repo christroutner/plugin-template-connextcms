@@ -70,7 +70,7 @@ function loadModels() {
 
 
 // ---BEGIN BACKBONE VIEWS---
-
+/*
 //Load the individual views for this plugin.
 $.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
   debugger;
@@ -93,7 +93,7 @@ $.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
 .fail(function( jqxhr, settings, exception ) {
   debugger;
 });
-
+*/
 // ---END BACKBONE VIEWS---
 
 
@@ -103,14 +103,14 @@ $.getScript(pluginDir+exampleView, function(data, textStatus, jqxhr) {
 
 
 // ---BEGIN LEFT MENU---
-
+/*
 var pluginLi = global.leftMenuView.$el.find('#plugin-link');
 //var tmpLi = pluginLi.clone();
 
 //Construct and add a menu item for the first view.
 var tmpLi = '<li id="example1-link"><a href="#/" onclick="global.pluginView.exampleView1.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
 pluginLi.parent().append(tmpLi);
-
+*/
 
 // ---BEGIN LEFT MENU---
 
