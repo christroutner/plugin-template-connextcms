@@ -27,7 +27,7 @@ var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 //var exampleView = pluginData.backboneViews[0];
 
 //Pull the Backbone model, collection, and view filename from the JSON settings.
-var thisPlugin = {};
+//var thisPlugin = {};
 thisPlugin.modelFiles = pluginData.backboneModelFiles;
 thisPlugin.modelNames = pluginData.backboneModelNames;
 thisPlugin.collectionFiles = pluginData.backboneCollectionFiles;
