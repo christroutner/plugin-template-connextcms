@@ -80,7 +80,7 @@ global.Async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
 
   
   
-}
+
 // ---END BACKBONE VIEWS---
 
 
