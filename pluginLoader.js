@@ -10,6 +10,7 @@ debugger;
 var thisPlugin = new Object();
 thisPlugin.views = [];
 thisPlugin.models = [];
+thisPlugin.collections = [];
 global.pluginView.loadedPlugins.push(thisPlugin);
 
 //Get the index of this plugin and store in the pluginData, for refrence from within the plugin's own code.
@@ -82,7 +83,11 @@ function loadModels() {
     
     $.getScript(pluginDir+thisPlugin.modelFiles[i], function(data, textStatus, jqxhr) {
       //global.exampleModel = new ExampleModel();
-      global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
+      //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
+      var constructor = "new "+thisPlugin.modelNames[i];
+      var thisModel = eval(constructor);
+      
+      thisPlugin.collections.push(thisModel);
 
       //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
       /*
