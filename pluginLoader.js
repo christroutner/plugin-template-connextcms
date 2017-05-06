@@ -42,7 +42,7 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 
 //Loop through each of the backbone views for this plugin
 //for(var i=0; i < thisPlugin.viewFiles.length; i++) {
-global.Async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
+global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   debugger;
   
   //Load the individual views for this plugin.
