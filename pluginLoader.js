@@ -50,13 +50,15 @@ for(var i=0; i < thisPlugin.viewFiles.length; i++) {
     //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
     var constructor = "new "+thisPlugin.viewNames[i]+"({el: $(pluginData.divId), pluginData: pluginData })";
     
-    global.pluginView.pluginData[pluginIndex].BackboneView[i] = eval(constructor);
+    //global.pluginView.pluginData[pluginIndex].BackboneView[i] = eval(constructor);
+    var thisView = eval(constructor);
     
     //Create a global reference to this view.
     //global.pluginView.exampleView1 = thisPlugin.exampleView1;
 
     //Add this view to the loadedPlugins.views[] array.
-    thisPlugin.views.push(thisPlugin.exampleView1);
+    //thisPlugin.views.push(thisPlugin.exampleView1);
+    thisPlugin.views.push(thisView);
 
     //Render the view
     //thisPlugin.exampleView1.render(pluginData);
