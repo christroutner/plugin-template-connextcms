@@ -45,7 +45,7 @@ var promiseArray = []; //Stores promises.
 for(var i=0; i < thisPlugin.viewFiles.length; i++) {
 
   //Load the individual views for this plugin.
-  var promiseArray[i] = $.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
+  promiseArray[i] = $.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
     debugger;
 
     resolve(true);
