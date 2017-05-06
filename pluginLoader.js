@@ -41,12 +41,15 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 // ---BEGIN BACKBONE VIEWS---
 
 //Loop through each of the backbone views for this plugin
+var promiseArray = []; //Stores promises.
 for(var i=0; i < thisPlugin.viewFiles.length; i++) {
 
   //Load the individual views for this plugin.
-  $.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
+  var promiseArray[i] = $.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
     debugger;
 
+    resolve(true);
+    
     //Create the new view.
     //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
     var constructor = "new "+thisPlugin.viewNames[i]+"({el: $(pluginData.divId), pluginData: pluginData })";
@@ -68,6 +71,14 @@ for(var i=0; i < thisPlugin.viewFiles.length; i++) {
 
   })
   .fail(function( jqxhr, settings, exception ) {
+    debugger;
+    
+    reject(false);
+  });
+  
+  promiseArray[i].then( function(results) {
+    debugger;
+  }, function(error) {
     debugger;
   });
 }
