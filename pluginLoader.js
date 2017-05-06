@@ -41,18 +41,18 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 // ---BEGIN BACKBONE VIEWS---
 
 //Loop through each of the backbone views for this plugin
-var promiseArray = []; //Stores promises.
-for(var i=0; i < thisPlugin.viewFiles.length; i++) {
-
+//for(var i=0; i < thisPlugin.viewFiles.length; i++) {
+global.Async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
+  debugger;
+  
   //Load the individual views for this plugin.
-  promiseArray[i] = $.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
+  //$.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
+  $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
     debugger;
-
-    resolve(true);
-    
+  
     //Create the new view.
     //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
-    var constructor = "new "+thisPlugin.viewNames[i]+"({el: $(pluginData.divId), pluginData: pluginData })";
+    var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
     
     //global.pluginView.pluginData[pluginIndex].BackboneView[i] = eval(constructor);
     var thisView = eval(constructor);
@@ -73,14 +73,13 @@ for(var i=0; i < thisPlugin.viewFiles.length; i++) {
   .fail(function( jqxhr, settings, exception ) {
     debugger;
     
-    reject(false);
   });
+}, function(err) {
+  debugger;
+});
+
   
-  promiseArray[i].then( function(results) {
-    debugger;
-  }, function(error) {
-    debugger;
-  });
+  
 }
 // ---END BACKBONE VIEWS---
 
