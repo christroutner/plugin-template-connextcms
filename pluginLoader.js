@@ -68,7 +68,7 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
     //Render the view
     //thisPlugin.exampleView1.render(pluginData);
 
-    loadModels();
+    //loadModels();
 
   })
   .fail(function( jqxhr, settings, exception ) {
@@ -93,12 +93,13 @@ function loadModels() {
   debugger;
   
   //Loop through each of the backbone models for this plugin
-  for(var i=0; i < thisPlugin.modelFiles.length; i++) {
+  //for(var i=0; i < thisPlugin.modelFiles.length; i++) {
+  global.async.eachOf(thisPlugin.modelFiles, function(value, key, callback) {
     
-    $.getScript(pluginDir+thisPlugin.modelFiles[i], function(data, textStatus, jqxhr) {
+    $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
       //global.exampleModel = new ExampleModel();
       //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
-      var constructor = "new "+thisPlugin.modelNames[i];
+      var constructor = "new "+thisPlugin.modelNames[key];
       var thisModel = eval(constructor);
       
       thisPlugin.collections.push(thisModel);
@@ -119,7 +120,9 @@ function loadModels() {
     .fail(function( jqxhr, settings, exception ) {
       debugger;
     });
-  }
+  }, function(err) {
+    debugger;
+  });
   
 }
 // ---END BACKBONE MODELS---
