@@ -140,7 +140,7 @@ function loadModels() {
       debugger;
       console.error('Problem with pluginLoader.js/loadModels() when trying to load Backbone Models: '+err);  
     } else {
-      loadModels();
+      loadCollections();
     }
   });
   
