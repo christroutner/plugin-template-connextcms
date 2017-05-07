@@ -42,23 +42,17 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 // ---BEGIN BACKBONE VIEWS---
 
 //Loop through each of the backbone views for this plugin.
-//Have to use an async for loop.
-//for(var i=0; i < thisPlugin.viewFiles.length; i++) {
+//Have to use an async for loop since we making async calls to $.getScript().
 global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   debugger;
   
   try {
     //Load the individual views for this plugin.
-    //$.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
     $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
       debugger;
 
-
         //Create the new view.
-        //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
         var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
-
-        //global.pluginView.pluginData[pluginIndex].BackboneView[i] = eval(constructor);
         var thisView = eval(constructor);
 
         //Create a global reference to this view.
@@ -199,7 +193,7 @@ var pluginLi = global.leftMenuView.$el.find('#plugin-link');
 //var tmpLi = pluginLi.clone();
 
 //Construct and add a menu item for the first view.
-var tmpLi = '<li id="example1-link"><a href="#/" onclick="global.pluginView.exampleView1.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
+var tmpLi = '<li id="example1-link"><a href="#/" onclick="global.pluginView.loadedPlugins[0].views[0].render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
 pluginLi.parent().append(tmpLi);
 
 
