@@ -120,17 +120,7 @@ function loadModels() {
 
         thisPlugin.collections.push(thisModel);
 
-        //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
-        /*
-        $.getScript(pluginDir+exampleCollection, function(data, textStatus, jqxhr) {
-          global.exampleCollection = new ExampleCollection();
-          global.exampleCollection.fetch();
-        })
-
-        .fail(function( jqxhr, settings, exception ) {
-          debugger;
-        });
-        */
+       
         
         callback();
         
@@ -145,15 +135,58 @@ function loadModels() {
     }
     
   }, function(err) {
-    debugger;
+    
+    if(err) {
+      debugger;
+      console.error('Problem with pluginLoader.js/loadModels() when trying to load Backbone Models: '+err);  
+    } else {
+      loadModels();
+    }
   });
   
 }
 // ---END BACKBONE MODELS---
 
 
+// ---BEGIN BACKBONE COLLECTIONS---
+//The Collection *depends* on the Model, so load the Collection script after Models have been loaded.
+function loadCollections() {
+  
+  global.async.eachOf(thisPlugin.collectionFiles, function(value, key, callback) {
+    try {
+      
+      $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+        debugger;
+        
+        var constructor = "new "+thisPlugin.constructorNames[key];
+        var thisCollection = eval(constructor);
+        
+        thisPlugin.collections.push(thisCollection);
+        
+        //This line may need to be changed based on the particular plugin.
+        //Not sure if we always want to fetch() by default?
+        thisCollection.fetch();
+        
+      })
 
-
+      .fail(function( jqxhr, settings, exception ) {
+        debugger;
+      });
+        
+      
+    } catch(err) {
+      debugger;
+      callback(err);
+    }
+    
+  }, function(err) {
+    if(err) {
+      debugger;
+      console.error('Problem with pluginLoader.js/loadCollections() when trying to load Backbone Collections: '+err);
+    }
+  });
+}
+// ---END BACKBONE MODELS---
 
 
 
