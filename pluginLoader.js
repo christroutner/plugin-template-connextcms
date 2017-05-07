@@ -91,7 +91,7 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   if(err) {
     console.error('Problem with pluginLoader.js when trying to load Backbone Views: '+err);  
   } else {
-    
+    loadModels();
   }
   
 });
@@ -108,31 +108,37 @@ function loadModels() {
   //Loop through each of the backbone models for this plugin
   //for(var i=0; i < thisPlugin.modelFiles.length; i++) {
   global.async.eachOf(thisPlugin.modelFiles, function(value, key, callback) {
+    try {
     
-    $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-      //global.exampleModel = new ExampleModel();
-      //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
-      var constructor = "new "+thisPlugin.modelNames[key];
-      var thisModel = eval(constructor);
-      
-      thisPlugin.collections.push(thisModel);
+      $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+        //global.exampleModel = new ExampleModel();
+        //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
+        var constructor = "new "+thisPlugin.modelNames[key];
+        var thisModel = eval(constructor);
 
-      //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
-      /*
-      $.getScript(pluginDir+exampleCollection, function(data, textStatus, jqxhr) {
-        global.exampleCollection = new ExampleCollection();
-        global.exampleCollection.fetch();
+        thisPlugin.collections.push(thisModel);
+
+        //The Collection *depends* on the Model, so loading the Collection script within the Model $.get handler.
+        /*
+        $.getScript(pluginDir+exampleCollection, function(data, textStatus, jqxhr) {
+          global.exampleCollection = new ExampleCollection();
+          global.exampleCollection.fetch();
+        })
+
+        .fail(function( jqxhr, settings, exception ) {
+          debugger;
+        });
+        */
+        
+        callback();
+        
       })
-      
       .fail(function( jqxhr, settings, exception ) {
         debugger;
       });
-      */
-
-    })
-    .fail(function( jqxhr, settings, exception ) {
-      debugger;
-    });
+    } catch(err) {
+      callback(err);
+    }
   }, function(err) {
     debugger;
   });
