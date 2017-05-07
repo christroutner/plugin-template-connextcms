@@ -44,48 +44,58 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 //Loop through each of the backbone views for this plugin.
 //Have to use an async for loop.
 //for(var i=0; i < thisPlugin.viewFiles.length; i++) {
-global.async.eachOf(thisPlugin.viewFiles, function(value, key, loadViewsDone) {
+global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   debugger;
   
-  //Load the individual views for this plugin.
-  //$.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
-  $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-    debugger;
+  try {
+    //Load the individual views for this plugin.
+    //$.getScript(pluginDir+thisPlugin.viewFiles[i], function(data, textStatus, jqxhr) {
+    $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+      debugger;
+
+
+        //Create the new view.
+        //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
+        var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
+
+        //global.pluginView.pluginData[pluginIndex].BackboneView[i] = eval(constructor);
+        var thisView = eval(constructor);
+
+        //Create a global reference to this view.
+        //global.pluginView.exampleView1 = thisPlugin.exampleView1;
+
+        //Add this view to the loadedPlugins.views[] array.
+        //thisPlugin.views.push(thisPlugin.exampleView1);
+        thisPlugin.views.push(thisView);
+
+        //Render the view
+        //thisPlugin.exampleView1.render(pluginData);
+
+        //loadModels();
+        callback();
+
+    })
+    .fail(function( jqxhr, settings, exception ) {
+      debugger;
+
+      console.error('Problem with pluginLoader.js when trying load Backbone Views: '+exception);
+    });
+    
+  } catch(err) {
+    callback(err);
+  }
   
-    //Create the new view.
-    //thisPlugin.exampleView1 = new ExampleView1({el: $(pluginData.divId), pluginData: pluginData});
-    var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
-    
-    //global.pluginView.pluginData[pluginIndex].BackboneView[i] = eval(constructor);
-    var thisView = eval(constructor);
-    
-    //Create a global reference to this view.
-    //global.pluginView.exampleView1 = thisPlugin.exampleView1;
-
-    //Add this view to the loadedPlugins.views[] array.
-    //thisPlugin.views.push(thisPlugin.exampleView1);
-    thisPlugin.views.push(thisView);
-
-    //Render the view
-    //thisPlugin.exampleView1.render(pluginData);
-
-    //loadModels();
-
-  })
-  .fail(function( jqxhr, settings, exception ) {
-    debugger;
-    
-    console.error('Problem with pluginLoader.js when trying load Backbone Views: '+exception);
-  });
 }, function(err) {
   debugger;
   
-  console.error('Problem with pluginLoader.js when trying to load Backbone Views: '+err);
+  if(err) {
+    console.error('Problem with pluginLoader.js when trying to load Backbone Views: '+err);  
+  } else {
+    
+  }
+  
 });
 
-function loadViewsDone() {
-  debugger;
-}
   
 
 // ---END BACKBONE VIEWS---
