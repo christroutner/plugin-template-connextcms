@@ -9,7 +9,10 @@
   
   "backboneViewNames": ["ExampleView1"],
   "backboneModelNames": ["ExampleModel"],
-  "backboneCollectionNames": ["ExampleCollection"]
+  "backboneCollectionNames": ["ExampleCollection"],
+  
+  "primaryViewInstance": "exampleView1",
+  "primaryViewConstructor": "ExampleView1"
 
 }
 

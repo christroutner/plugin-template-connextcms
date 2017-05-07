@@ -4,7 +4,11 @@ debugger;
 // BEGIN PLUGIN CUSTOMIZATION
 // Customize this plugin by changing the variables below.
 
+
 // END PLUGIN CUSTOMIZATION
+
+
+
 
 //BEGIN BOILER PLATE CODE - DO NOT CHANGE CODE BELOW THIS LINE
 //Add this plugin to the loadedPlugins array.
@@ -22,14 +26,8 @@ global.pluginView.pluginData[pluginIndex].pluginIndex = pluginIndex;
 var pluginData = global.pluginView.pluginData[pluginIndex];
 var pluginDir = '/plugins/'+pluginData.pluginDirName+'/';
 
-//Retrieve data from JSON settings file for use in the loading script below.
-//THIS CODE TO BE REMOVED
-//var exampleModel = pluginData.backboneModels[0];
-//var exampleCollection = pluginData.backboneCollections[1];
-//var exampleView = pluginData.backboneViews[0];
 
 //Pull the Backbone model, collection, and view filename from the JSON settings.
-//var thisPlugin = {};
 thisPlugin.modelFiles = pluginData.backboneModelFiles;
 thisPlugin.modelNames = pluginData.backboneModelNames;
 thisPlugin.collectionFiles = pluginData.backboneCollectionFiles;
@@ -44,29 +42,27 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 //Loop through each of the backbone views for this plugin.
 //Have to use an async for loop since we making async calls to $.getScript().
 global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
-  debugger;
+  //debugger;
   
   try {
     //Load the individual views for this plugin.
     $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+      //debugger;
+
+      //Create the new view.
+      var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
+      var thisView = eval(constructor);
+
+      //Add this view to the loadedPlugins.views[] array.
+      //thisPlugin.views.push(thisPlugin.exampleView1);
+      thisPlugin.views.push(thisView);
+
+      //Create a global reference to this view.
+      //global.pluginView.exampleView1 = thisPlugin.exampleView1;
       debugger;
 
-        //Create the new view.
-        var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
-        var thisView = eval(constructor);
-
-        //Create a global reference to this view.
-        //global.pluginView.exampleView1 = thisPlugin.exampleView1;
-
-        //Add this view to the loadedPlugins.views[] array.
-        //thisPlugin.views.push(thisPlugin.exampleView1);
-        thisPlugin.views.push(thisView);
-
-        //Render the view
-        //thisPlugin.exampleView1.render(pluginData);
-
-        //loadModels();
-        callback();
+      //loadModels();
+      callback();
 
     })
     .fail(function( jqxhr, settings, exception ) {
@@ -80,9 +76,10 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   }
   
 }, function(err) {
-  debugger;
+  //debugger;
   
   if(err) {
+    debugger;
     console.error('Problem with pluginLoader.js when trying to load Backbone Views: '+err);  
   } else {
     loadModels();
@@ -90,14 +87,12 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   
 });
 
-  
-
 // ---END BACKBONE VIEWS---
 
 
 // ---BEGIN BACKBONE MODELS---
 function loadModels() {
-  debugger;
+  //debugger;
   
   //Loop through each of the backbone models for this plugin
   //for(var i=0; i < thisPlugin.modelFiles.length; i++) {
@@ -105,7 +100,7 @@ function loadModels() {
     try {
     
       $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-        debugger;
+        //debugger;
         
         //global.exampleModel = new ExampleModel();
         //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
@@ -114,13 +109,12 @@ function loadModels() {
 
         thisPlugin.collections.push(thisModel);
 
-       
-        
         callback();
         
       })
       .fail(function( jqxhr, settings, exception ) {
         debugger;
+        callback(exception);
       });
       
     } catch(err) {
@@ -150,7 +144,7 @@ function loadCollections() {
     try {
       
       $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-        debugger;
+        //debugger;
         
         var constructor = "new "+thisPlugin.collectionNames[key];
         var thisCollection = eval(constructor);
@@ -165,6 +159,7 @@ function loadCollections() {
 
       .fail(function( jqxhr, settings, exception ) {
         debugger;
+        callback(exception);
       });
         
       
