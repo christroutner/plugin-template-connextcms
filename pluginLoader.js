@@ -36,6 +36,8 @@ thisPlugin.viewFiles = pluginData.backboneViewFiles;
 thisPlugin.viewNames = pluginData.backboneViewNames;
 thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 
+//Used to generate a human readable reference to the plugins primary view.
+var pluginViewReference;
 
 // ---BEGIN BACKBONE VIEWS---
 
@@ -57,9 +59,15 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
       //thisPlugin.views.push(thisPlugin.exampleView1);
       thisPlugin.views.push(thisView);
 
-      //Create a global reference to this view.
+      //Create a global reference to the primary view that should be loaded when the user
+      //clicks on the left menu entry for this plugin.
       //global.pluginView.exampleView1 = thisPlugin.exampleView1;
       debugger;
+      if(global.pluginView.pluginData[0].primaryViewConstructor == thisPlugin.viewNames[key]) {
+        pluginViewReference = "global.pluginView."+global.pluginView.pluginData[0].primaryViewInstance;
+        var evalStr = pluginViewReference+" = thisView";
+        eval(evalStr);
+      }
 
       //loadModels();
       callback();
@@ -188,7 +196,7 @@ var pluginLi = global.leftMenuView.$el.find('#plugin-link');
 //var tmpLi = pluginLi.clone();
 
 //Construct and add a menu item for the first view.
-var tmpLi = '<li id="example1-link"><a href="#/" onclick="global.pluginView.loadedPlugins[0].views[0].render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
+var tmpLi = '<li id="example1-link"><a href="#/" onclick="'+pluginViewReference+'.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
 pluginLi.parent().append(tmpLi);
 
 
