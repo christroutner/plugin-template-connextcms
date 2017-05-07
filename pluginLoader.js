@@ -67,6 +67,10 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
         pluginViewReference = "global.pluginView."+global.pluginView.pluginData[0].primaryViewInstance;
         var evalStr = pluginViewReference+" = thisView";
         eval(evalStr);
+        
+        //Add a menu item for this primary view.
+        var tmpLi = '<li id="'+pluginData.primaryViewId+'"><a href="#/" onclick="'+pluginViewReference+'.render()"><i class="fa '+pluginData.primaryViewFAIcon+'"></i> <span>'+pluginData.primaryViewLabel+'</span></a></li>';
+        pluginLi.parent().append(tmpLi);
       }
 
       //loadModels();
@@ -193,12 +197,6 @@ function loadCollections() {
 // ---BEGIN LEFT MENU---
 
 var pluginLi = global.leftMenuView.$el.find('#plugin-link');
-//var tmpLi = pluginLi.clone();
-
-//Construct and add a menu item for the first view.
-var tmpLi = '<li id="example1-link"><a href="#/" onclick="'+pluginViewReference+'.render()"><i class="fa fa-gear"></i> <span>Plugin Example</span></a></li>';
-pluginLi.parent().append(tmpLi);
-
 
 // ---BEGIN LEFT MENU---
 
