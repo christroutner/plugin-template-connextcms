@@ -43,7 +43,7 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 //Loop through each of the backbone views for this plugin.
 //Have to use an async for loop.
 //for(var i=0; i < thisPlugin.viewFiles.length; i++) {
-global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
+global.async.eachOf(thisPlugin.viewFiles, function(value, key, loadViewsDone) {
   debugger;
   
   //Load the individual views for this plugin.
@@ -82,7 +82,9 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   console.error('Problem with pluginLoader.js when trying to load Backbone Views: '+err);
 });
 
-  
+function loadViewsDone() {
+  debugger;
+}
   
 
 // ---END BACKBONE VIEWS---
