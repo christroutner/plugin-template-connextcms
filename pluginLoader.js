@@ -62,6 +62,9 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
     scriptPromise.then(function(results) {
       debugger;
       
+      //rescope the thisPlugin variable.
+      var thisPlugin = global.pluginView.loadedPlugins[key];
+      
       //Create the new view.
       var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
       var thisView = eval(constructor);
