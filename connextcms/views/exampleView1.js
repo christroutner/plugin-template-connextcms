@@ -1,4 +1,4 @@
-//exampleView1.js
+//plugin-template: exampleView1.js
 debugger;
 
 
