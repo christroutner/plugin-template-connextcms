@@ -47,10 +47,21 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
   //debugger;
   
   try {
+    
     //Load the individual views for this plugin.
-    $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-      //debugger;
+    var scriptPromise = $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+      debugger;
 
+    })
+    .fail(function( jqxhr, settings, exception ) {
+      debugger;
+
+      console.error('Problem with pluginLoader.js when trying load Backbone Views: '+exception);
+    });
+    
+    scriptPromise.then(function(results) {
+      debugger;
+      
       //Create the new view.
       var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
       var thisView = eval(constructor);
@@ -75,12 +86,9 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
 
       //loadModels();
       callback();
-
-    })
-    .fail(function( jqxhr, settings, exception ) {
+      
+    }, function(error) {
       debugger;
-
-      console.error('Problem with pluginLoader.js when trying load Backbone Views: '+exception);
     });
     
   } catch(err) {
