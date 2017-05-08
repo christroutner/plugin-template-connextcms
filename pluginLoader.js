@@ -44,7 +44,7 @@ var pluginViewReference;
 //Loop through each of the backbone views for this plugin.
 //Have to use an async for loop since we making async calls to $.getScript().
 global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
-  //debugger;
+  debugger;
   
   try {
     
@@ -77,7 +77,7 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
       //clicks on the left menu entry for this plugin.
       //global.pluginView.exampleView1 = thisPlugin.exampleView1;
       debugger;
-      if(global.pluginView.pluginData[0].primaryViewConstructor == thisPlugin.viewNames[key]) {
+      if(global.pluginView.pluginData[key].primaryViewConstructor == thisPlugin.viewNames[key]) {
         pluginViewReference = "global.pluginView."+global.pluginView.pluginData[0].primaryViewInstance;
         var evalStr = pluginViewReference+" = thisView";
         eval(evalStr);
