@@ -62,27 +62,12 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
     scriptPromise.then(function(results) {
       debugger;
       
-      //rescope the thisPlugin variable by matching the constructor in the global variable
-      //with the script contents that were returned in the results variable.
-      try {
-        var thisPlugin = undefined;
-        for(var i=0; i < global.pluginView.loadedPlugins.length; i++) {
-          for(var j=0; j < global.pluginView.loadedPlugins[i].viewNames.length; j++) {
-            if(results.indexOf(global.pluginView.loadedPlugins[i].viewNames[j]) > -1) {
-              thisPlugin = global.pluginView.loadedPlugins[i];
-              break;
-            }  
-          }
-        }
-        //var thisPlugin = global.pluginView.loadedPlugins[key];
-        if(thisPlugin == undefined) {
-          console.error('Problem in pluginLoader.js. Could not identify the view and could not set scope of thisPlugin.');
-          return;
-        }
-      } catch(err) {
-        console.log('Error trying to scope thisPlugin: '+err);
+      var thisPlugin = getPluginScope('viewNames', results);
+      if(thisPlugin == null) {
+        console.error('Could not load plugin.');
         return;
       }
+      
       debugger;
       
       //Create the new view.
@@ -229,6 +214,43 @@ function loadCollections() {
 
 var pluginLi = global.leftMenuView.$el.find('#plugin-link');
 
-// ---BEGIN LEFT MENU---
+// ---END LEFT MENU---
+
+
+
+// ---BEGIN UTILITY FUNCTIONS---
+
+//This function is used to retrieve the plugin scope -e.g. which plugin inside
+//global.pluginView.loadedPlugins that we're trying to deal with. It returns
+//the element inside the global.pluginView.loadedPlugins array that matches the
+//key and script. If no match is found, it returns null.
+function getPluginScope(key, script) {
+  debugger;
+  
+  try {
+    var thisPlugin = undefined;
+    for(var i=0; i < global.pluginView.loadedPlugins.length; i++) {
+      for(var j=0; j < global.pluginView.loadedPlugins[i].viewNames.length; j++) {
+        if(script.indexOf(global.pluginView.loadedPlugins[i].viewNames[j]) > -1) {
+          thisPlugin = global.pluginView.loadedPlugins[i];
+          return thisPlugin;
+        }  
+      }
+    }
+    
+    if(thisPlugin == undefined) {
+      console.error('Problem in pluginLoader.js/getPluginScope(). Could not identify the view and could not set scope of thisPlugin. key = '+key+' script = '+script);
+      return null;
+    }
+    
+  } catch(err) {
+    console.log('Error in getPluginScope(): '+err);
+    return null;
+  }
+}
+
+// ---END UTILITY FUNCTIONS---
+
+
 
 //END BOILER PLATE CODE - DO NOT CHANGE CODE ABOVE THIS LINE
