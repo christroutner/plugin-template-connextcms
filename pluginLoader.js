@@ -120,7 +120,7 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
 
 // ---BEGIN BACKBONE MODELS---
 function loadModels() {
-  //debugger;
+  debugger;
   
   //Loop through each of the backbone models for this plugin
   //for(var i=0; i < thisPlugin.modelFiles.length; i++) {
