@@ -67,7 +67,7 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
       try {
         var thisPlugin = undefined;
         for(var i=0; i < global.pluginView.loadedPlugins.length; i++) {
-          for(var j=0; j < global.pluginView.loadedPlugins.viewNames.length; j++) {
+          for(var j=0; j < global.pluginView.loadedPlugins[i].viewNames.length; j++) {
             if(results.indexOf(global.pluginView.loadedPlugins[i].viewNames[j]) > -1) {
               thisPlugin = global.pluginView.loadedPlugins[i];
               break;
