@@ -62,8 +62,24 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
     scriptPromise.then(function(results) {
       debugger;
       
-      //rescope the thisPlugin variable.
-      var thisPlugin = global.pluginView.loadedPlugins[key];
+      //rescope the thisPlugin variable by matching the constructor in the global variable
+      //with the script contents that were returned in the results variable.
+      var thisPlugin = undefined;
+      for(var i=0; i < global.pluginView.loadedPlugins.length; i++) {
+        for(var j=0; j < global.pluginView.loadedPlugins.viewNames.length; j++) {
+          if(results.indexOf(global.pluginView.loadedPlugins[i].viewNames[j]) > -1) {
+            thisPlugin = global.pluginView.loadedPlugins[i];
+            break;
+          }  
+        }
+      }
+      //var thisPlugin = global.pluginView.loadedPlugins[key];
+      if(thisPlugin == undefined) {
+        console.error('Problem in pluginLoader.js. Could not identify the view and could not set scope of thisPlugin.');
+        return;
+      }
+      
+      debugger;
       
       //Create the new view.
       var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
