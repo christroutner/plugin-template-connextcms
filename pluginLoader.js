@@ -128,7 +128,7 @@ function loadModels() {
     try {
     
       $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-        //debugger;
+        debugger;
         
         //global.exampleModel = new ExampleModel();
         //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();

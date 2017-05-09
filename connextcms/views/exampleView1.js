@@ -96,7 +96,7 @@ var ExampleView1 = Backbone.View.extend({
     //debugger;
     
     var scaffoldElem = this.$el.find('#pluginScaffold');
-    
+debugger;    
     //Loop through all the Models in the Collection.
     for(var i=0; i < global.exampleCollection.models.length; i++) {
       var thisModel = global.exampleCollection.models[i];
