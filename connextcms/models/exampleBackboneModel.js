@@ -48,11 +48,18 @@ var ExampleModel = Backbone.Model.extend({
       
       //If the refreshView flag is set, then refresh the Collection and then refresh the View.
       if(thisModel.refreshView) {
+        
+        var thisPlugin = global.pluginView.getHandle('plugin-template-connextcms');
+        if(!thisPlugin) {
+          console.error('Could not find plugin that matches: '+'plugin-template-connextcms');
+          return;
+        }
+        
         thisModel.refreshView = false;
         //global.exampleCollection.refreshView = true;
         //global.exampleCollection.fetch();
-        this.pluginHandle.collections[0].refreshView = true;
-        this.pluginHandle.collections[0].fetch();
+        thisPlugin.collections[0].refreshView = true;
+        thisPlugin.collections[0].fetch(); 
       }
       
       log.push('exampleBackboneModel.js/save() executed.');
