@@ -145,7 +145,7 @@ debugger;
     
     debugger;
     
-    var thisCollection = this.pluginHandle.collections[0];
+    var thisCollection = thisPlugin.collections[0];
     
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
@@ -155,7 +155,7 @@ debugger;
     
     //Get a handle on this view.
     //var thisView = global.pluginView.exampleView1;
-    var thisView = this.pluginHandle.views[0];
+    var thisView = thisCollection.views[0];
     //var thisView = this;
     
     //Retrieve the updated string.
@@ -172,7 +172,13 @@ debugger;
   delModel: function(event) {
     //debugger;
     
-    var thisCollection = this.pluginHandle.collections[0];
+    var thisPlugin = global.pluginView.getHandle('plugin-template-connextcms');
+    if(!thisPlugin) {
+      console.error('Could not find plugin that matches: '+'plugin-template-connextcms');
+      return;
+    }
+    
+    var thisCollection = thisPlugin.collections[0];
     
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
@@ -219,7 +225,7 @@ debugger;
     
     //Get a handle on this view.
     //var thisView = global.pluginView.exampleView1;
-    //var thisView = this.pluginHandle.views[0];
+    //var thisView = this.pluginHandle.views[0s];
     var thisView = this;
     
     //Get a handle on the scaffold element
