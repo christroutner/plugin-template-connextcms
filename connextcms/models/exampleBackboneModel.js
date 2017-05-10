@@ -20,6 +20,12 @@ var ExampleModel = Backbone.Model.extend({
     //});
     //debugger;
 
+    //Load the plugin metdata as a local variables.
+    this.pluginData = this.options.pluginData;
+    
+    //Load a handle to the plugin constructs as a local variable.
+    this.pluginHandle = this.options.pluginHandle;
+    
     this.url = '/api/exampleplugin/'+this.id+'/update';
     
     this.refreshView = false;

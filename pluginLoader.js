@@ -55,7 +55,7 @@ function loadModels() {
         
         //global.exampleModel = new ExampleModel();
         //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
-        var constructor = "new "+thisPlugin.modelNames[key];
+        var constructor = "new "+thisPlugin.modelNames[key]+"({pluginData: pluginData, pluginHandle: thisPlugin })";
         var thisModel = eval(constructor);
 
         thisPlugin.models.push(thisModel);
@@ -97,7 +97,7 @@ function loadCollections() {
       $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
         //debugger;
         
-        var constructor = "new "+thisPlugin.collectionNames[key];
+        var constructor = "new "+thisPlugin.collectionNames[key]+"({pluginData: pluginData, pluginHandle: thisPlugin })";
         var thisCollection = eval(constructor);
         
         thisPlugin.collections.push(thisCollection);

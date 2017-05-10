@@ -103,10 +103,13 @@ var ExampleView1 = Backbone.View.extend({
     
 debugger;    
     
+    var thisCollection = this.pluginHandle.collections[0];
     
     //Loop through all the Models in the Collection.
-    for(var i=0; i < global.exampleCollection.models.length; i++) {
-      var thisModel = global.exampleCollection.models[i];
+    //for(var i=0; i < global.exampleCollection.models.length; i++) {
+    for(var i=0; i < thisCollection.models.length; i++) {
+      //var thisModel = global.exampleCollection.models[i];
+      var thisModel = thisCollection.models[i];
       
       //Clone the scaffolding element      
       var tmpElem = scaffoldElem.clone();
@@ -133,13 +136,18 @@ debugger;
   updateModel: function(event) {
     //debugger;
     
+    var thisCollection = this.pluginHandle.collections[0];
+    
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
-    var thisModel = global.exampleCollection.models[modelIndex];
+    //var thisModel = global.exampleCollection.models[modelIndex];
+    var thisModel = thisCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
     //Get a handle on this view.
-    var thisView = global.pluginView.exampleView1;
+    //var thisView = global.pluginView.exampleView1;
+    //var thisView = this.pluginHandle.views[0];
+    var thisView = this;
     
     //Retrieve the updated string.
     var newStr = thisView.$el.find('#model'+modelIndex).find('.strInput').val();
@@ -155,9 +163,12 @@ debugger;
   delModel: function(event) {
     //debugger;
     
+    var thisCollection = this.pluginHandle.collections[0];
+    
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
-    var thisModel = global.exampleCollection.models[modelIndex];
+    //var thisModel = global.exampleCollection.models[modelIndex];
+    var thisModel = thisCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
     //Delete the model on the server.
@@ -198,7 +209,9 @@ debugger;
     //debugger;
     
     //Get a handle on this view.
-    var thisView = global.pluginView.exampleView1;
+    //var thisView = global.pluginView.exampleView1;
+    //var thisView = this.pluginHandle.views[0];
+    var thisView = this;
     
     //Get a handle on the scaffold element
     var scaffoldElem = thisView.$el.find('#pluginScaffold');
@@ -211,8 +224,12 @@ debugger;
     $.post('/api/exampleplugin/create', obj, function(data) {
       //debugger;
       
-      global.exampleCollection.refreshView = true;
-      global.exampleCollection.fetch();
+      var thisCollection = this.pluginHandle.collections[0];
+      
+      //global.exampleCollection.refreshView = true;
+      //global.exampleCollection.fetch();
+      thisCollection.refreshView = true;
+      thisCollection.fetch();
     })
     .fail(function( jqxhr, textStatus, error ) {
       debugger;
