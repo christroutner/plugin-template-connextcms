@@ -59,7 +59,7 @@ var ExampleModel = Backbone.Model.extend({
       //This is the error handler.
       //debugger;
       log.push('Error while trying exampleBackboneModel.js/save(). Most likely due to communication issue with the server.');
-      sendLog();
+      //sendLog();
       console.error('Communication error with server while execute exampleBackboneModel.js/save()');
     });
 
