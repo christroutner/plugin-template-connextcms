@@ -101,12 +101,9 @@ var ExampleView1 = Backbone.View.extend({
     
     var scaffoldElem = this.$el.find('#pluginScaffold');
     
-debugger;    
-    
     var thisCollection = this.pluginHandle.collections[0];
     
     //Loop through all the Models in the Collection.
-    //for(var i=0; i < global.exampleCollection.models.length; i++) {
     for(var i=0; i < thisCollection.models.length; i++) {
       //var thisModel = global.exampleCollection.models[i];
       var thisModel = thisCollection.models[i];
@@ -149,14 +146,11 @@ debugger;
     
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
-    //var thisModel = global.exampleCollection.models[modelIndex];
     var thisModel = thisCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
     //Get a handle on this view.
-    //var thisView = global.pluginView.exampleView1;
     var thisView = thisPlugin.views[0];
-    //var thisView = this;
     
     //This is a corner case where there are no entries in the DB.
     if(thisModelId == "") {
@@ -191,7 +185,6 @@ debugger;
     
     //Get a handle on the selected model.
     var modelIndex = event.data[0];
-    //var thisModel = global.exampleCollection.models[modelIndex];
     var thisModel = thisCollection.models[modelIndex];
     var thisModelId = thisModel.get('_id');
     
@@ -206,8 +199,6 @@ debugger;
       }
       
       //Refresh the Collection and View.
-      //global.exampleCollection.refreshView = true;
-      //global.exampleCollection.fetch();
       thisCollection.refreshView = true;
       thisCollection.fetch();
       
@@ -241,8 +232,6 @@ debugger;
     }
     
     //Get a handle on this view.
-    //var thisView = global.pluginView.exampleView1;
-    //var thisView = this.pluginHandle.views[0];
     var thisView = thisPlugin.views[0];
     
     //Get a handle on the scaffold element
@@ -258,8 +247,6 @@ debugger;
       
       var thisCollection = thisPlugin.collections[0];
       
-      //global.exampleCollection.refreshView = true;
-      //global.exampleCollection.fetch();
       thisCollection.refreshView = true;
       thisCollection.fetch();
     })

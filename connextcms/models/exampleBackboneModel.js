@@ -7,7 +7,6 @@ var ExampleModel = Backbone.Model.extend({
   idAttribute: "_id",  //Map the Model 'id' to the '_id' assigned by the server.
 
   //When initialized this.id is undefined. This url gets fixed in the initialize() function.
-  //url: 'http://'+global.serverIp+':'+global.serverPort+'/api/post/'+this.id+'/update', 
   url: '',
 
   //Initialize is called upon the instantiation of this model. This function is executed once
@@ -56,8 +55,6 @@ var ExampleModel = Backbone.Model.extend({
         }
         
         thisModel.refreshView = false;
-        //global.exampleCollection.refreshView = true;
-        //global.exampleCollection.fetch();
         thisPlugin.collections[0].refreshView = true;
         thisPlugin.collections[0].fetch(); 
       }

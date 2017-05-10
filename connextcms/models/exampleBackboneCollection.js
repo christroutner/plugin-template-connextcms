@@ -45,9 +45,9 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
     this.on('reset', function() {
       //debugger;
 
+      //Re-render the view if the refreshView flag is true.
       if(this.refreshView) {
         this.refreshView = false;
-        //global.pluginView.exampleView1.render();
         this.pluginHandle.views[0].render();
       }
 
