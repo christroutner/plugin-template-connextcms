@@ -18,7 +18,7 @@ var ExampleModel = Backbone.Model.extend({
       //debugger;        
     //  this.save();
     //});
-    //debugger;
+    debugger;
 
     //Load the plugin metdata as a local variables.
     this.pluginData = this.options.pluginData;

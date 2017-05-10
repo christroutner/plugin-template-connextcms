@@ -24,12 +24,18 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
   refreshView: false,
 
   initialize: function() {
-    //debugger;
+    debugger;
     //This function is often used for debugging, so leave it here.
     //this.on('change', function(model) {
     //  debugger;
     //});
 
+    //Load the plugin metdata as a local variables.
+    this.pluginData = this.options.pluginData;
+    
+    //Load a handle to the plugin constructs as a local variable.
+    this.pluginHandle = this.options.pluginHandle;
+    
     this.url = '/api/exampleplugin/list',
 
     this.on('add', function() {
