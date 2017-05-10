@@ -55,18 +55,18 @@ exports.update = function(req, res) {
 	//}
   
   //Ensure the user making the request is a Keystone Admin
-  var isAdmin = req.user.get('isAdmin');
-  if(!isAdmin) {
-    return res.apiError(403, 'Not allowed to access this API. Not Keystone Admin.');
-  }
+  //var isAdmin = req.user.get('isAdmin');
+  //if(!isAdmin) {
+  //  return res.apiError(403, 'Not allowed to access this API. Not Keystone Admin.');
+  //}
   
   //Since it's possible to spoof the Keystone Admin setting in the current version of the User model,
   //This is a check to make sure the user is a ConnexstCMS Admin
-  var admins = keystone.get('admins');
-  var userId = req.user.get('id');
-  if(admins.indexOf(userId) == -1) {
-    return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
-  }
+  //var admins = keystone.get('admins');
+  //var userId = req.user.get('id');
+  //if(admins.indexOf(userId) == -1) {
+  //  return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
+  //}
   
 	ExamplePluginModel.model.findById(req.params.id).exec(function(err, item) {
 		
@@ -99,18 +99,18 @@ exports.remove = function(req, res) {
 	//}
   
   //Ensure the user making the request is a Keystone Admin
-  var isAdmin = req.user.get('isAdmin');
-  if(!isAdmin) {
-    return res.apiError(403, 'Not allowed to access this API. Not Keystone Admin.');
-  }
+  //var isAdmin = req.user.get('isAdmin');
+  //if(!isAdmin) {
+  //  return res.apiError(403, 'Not allowed to access this API. Not Keystone Admin.');
+  //}
   
   //Since it's possible to spoof the Keystone Admin setting in the current version of the User model,
   //This is a check to make sure the user is a ConnexstCMS Admin
-  var admins = keystone.get('admins');
-  var userId = req.user.get('id');
-  if(admins.indexOf(userId) == -1) {
-    return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
-  }
+  //var admins = keystone.get('admins');
+  //var userId = req.user.get('id');
+  //if(admins.indexOf(userId) == -1) {
+  //  return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
+  //}
   
   ExamplePluginModel.model.findById(req.params.id).exec(function (err, item) {
 		
