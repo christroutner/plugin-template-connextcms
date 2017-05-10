@@ -161,7 +161,7 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
       debugger;
       
       //Create the new view.
-      var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData })";
+      var constructor = "new "+thisPlugin.viewNames[key]+"({el: $(pluginData.divId), pluginData: pluginData, pluginHandle: thisPlugin })";
       var thisView = eval(constructor);
 
       //Add this view to the loadedPlugins.views[] array.
