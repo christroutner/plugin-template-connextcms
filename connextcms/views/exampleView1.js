@@ -155,7 +155,7 @@ debugger;
     
     //Get a handle on this view.
     //var thisView = global.pluginView.exampleView1;
-    var thisView = thisCollection.views[0];
+    var thisView = thisPlugin.views[0];
     //var thisView = this;
     
     //Retrieve the updated string.
