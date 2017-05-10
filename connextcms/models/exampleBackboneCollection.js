@@ -23,7 +23,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
   //If true, the View will be re-render()'d when the collection is refreshed/reset.
   refreshView: false,
 
-  initialize: function(attributes, options) {
+  initialize: function(options) {
     debugger;
     //This function is often used for debugging, so leave it here.
     //this.on('change', function(model) {
