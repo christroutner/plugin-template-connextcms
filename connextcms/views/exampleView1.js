@@ -137,6 +137,11 @@ debugger;
     debugger;
     
     var thisPlugin = global.pluginView.getHandle('plugin-template-connextcms');
+    if(!thisPlugin) {
+      console.error('Could not find plugin that matches: '+'plugin-template-connextcms');
+      return;
+    }
+      
     
     debugger;
     
