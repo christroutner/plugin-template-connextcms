@@ -39,6 +39,96 @@ thisPlugin.templateFiles = pluginData.backboneTemplateFiles;
 //Used to generate a human readable reference to the plugins primary view.
 var pluginViewReference;
 
+
+
+// ---BEGIN BACKBONE MODELS---
+function loadModels() {
+  debugger;
+  
+  //Loop through each of the backbone models for this plugin
+  //for(var i=0; i < thisPlugin.modelFiles.length; i++) {
+  global.async.eachOf(thisPlugin.modelFiles, function(value, key, callback) {
+    try {
+    
+      $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+        debugger;
+        
+        //global.exampleModel = new ExampleModel();
+        //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
+        var constructor = "new "+thisPlugin.modelNames[key];
+        var thisModel = eval(constructor);
+
+        thisPlugin.models.push(thisModel);
+
+        callback();
+        
+      })
+      .fail(function( jqxhr, settings, exception ) {
+        debugger;
+        callback(exception);
+      });
+      
+    } catch(err) {
+      debugger;
+      callback(err);
+    }
+    
+  }, function(err) {
+    
+    if(err) {
+      debugger;
+      console.error('Problem with pluginLoader.js/loadModels() when trying to load Backbone Models: '+err);  
+    } else {
+      loadCollections();
+    }
+  });
+  
+}
+// ---END BACKBONE MODELS---
+
+
+// ---BEGIN BACKBONE COLLECTIONS---
+//The Collection *depends* on the Model, so load the Collection script after Models have been loaded.
+function loadCollections() {
+  
+  global.async.eachOf(thisPlugin.collectionFiles, function(value, key, callback) {
+    try {
+      
+      $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
+        //debugger;
+        
+        var constructor = "new "+thisPlugin.collectionNames[key];
+        var thisCollection = eval(constructor);
+        
+        thisPlugin.collections.push(thisCollection);
+        
+        //This line may need to be changed based on the particular plugin.
+        //Not sure if we always want to fetch() by default?
+        thisCollection.fetch();
+        
+      })
+
+      .fail(function( jqxhr, settings, exception ) {
+        debugger;
+        callback(exception);
+      });
+        
+      
+    } catch(err) {
+      debugger;
+      callback(err);
+    }
+    
+  }, function(err) {
+    if(err) {
+      debugger;
+      console.error('Problem with pluginLoader.js/loadCollections() when trying to load Backbone Collections: '+err);
+    }
+  });
+}
+// ---END BACKBONE MODELS---
+
+
 // ---BEGIN BACKBONE VIEWS---
 
 //Loop through each of the backbone views for this plugin.
@@ -116,96 +206,6 @@ global.async.eachOf(thisPlugin.viewFiles, function(value, key, callback) {
 });
 
 // ---END BACKBONE VIEWS---
-
-
-// ---BEGIN BACKBONE MODELS---
-function loadModels() {
-  debugger;
-  
-  //Loop through each of the backbone models for this plugin
-  //for(var i=0; i < thisPlugin.modelFiles.length; i++) {
-  global.async.eachOf(thisPlugin.modelFiles, function(value, key, callback) {
-    try {
-    
-      $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-        debugger;
-        
-        //global.exampleModel = new ExampleModel();
-        //global.pluginView.pluginData[pluginIndex].BackboneModel[i] = new thisPlugin.modelNames[i]();
-        var constructor = "new "+thisPlugin.modelNames[key];
-        var thisModel = eval(constructor);
-
-        thisPlugin.collections.push(thisModel);
-
-        callback();
-        
-      })
-      .fail(function( jqxhr, settings, exception ) {
-        debugger;
-        callback(exception);
-      });
-      
-    } catch(err) {
-      debugger;
-      callback(err);
-    }
-    
-  }, function(err) {
-    
-    if(err) {
-      debugger;
-      console.error('Problem with pluginLoader.js/loadModels() when trying to load Backbone Models: '+err);  
-    } else {
-      loadCollections();
-    }
-  });
-  
-}
-// ---END BACKBONE MODELS---
-
-
-// ---BEGIN BACKBONE COLLECTIONS---
-//The Collection *depends* on the Model, so load the Collection script after Models have been loaded.
-function loadCollections() {
-  
-  global.async.eachOf(thisPlugin.collectionFiles, function(value, key, callback) {
-    try {
-      
-      $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
-        //debugger;
-        
-        var constructor = "new "+thisPlugin.collectionNames[key];
-        var thisCollection = eval(constructor);
-        
-        thisPlugin.collections.push(thisCollection);
-        
-        //This line may need to be changed based on the particular plugin.
-        //Not sure if we always want to fetch() by default?
-        thisCollection.fetch();
-        
-      })
-
-      .fail(function( jqxhr, settings, exception ) {
-        debugger;
-        callback(exception);
-      });
-        
-      
-    } catch(err) {
-      debugger;
-      callback(err);
-    }
-    
-  }, function(err) {
-    if(err) {
-      debugger;
-      console.error('Problem with pluginLoader.js/loadCollections() when trying to load Backbone Collections: '+err);
-    }
-  });
-}
-// ---END BACKBONE MODELS---
-
-
 
 
 
