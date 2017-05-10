@@ -47,7 +47,8 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
 
       if(this.refreshView) {
         this.refreshView = false;
-        global.pluginView.exampleView1.render();
+        //global.pluginView.exampleView1.render();
+        this.pluginHandle.views[0].render();
       }
 
       //Assumption: this funciton is only called when opening the image gallery. Therefore we need to call it again and
