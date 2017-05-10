@@ -134,7 +134,11 @@ debugger;
   
   //This function is called whenever the user clicks on the 'Update' button next to a model listing.
   updateModel: function(event) {
-    //debugger;
+    debugger;
+    
+    var thisPlugin = global.pluginView.getHandle('plugin-template-connextcms');
+    
+    debugger;
     
     var thisCollection = this.pluginHandle.collections[0];
     
@@ -146,8 +150,8 @@ debugger;
     
     //Get a handle on this view.
     //var thisView = global.pluginView.exampleView1;
-    //var thisView = this.pluginHandle.views[0];
-    var thisView = this;
+    var thisView = this.pluginHandle.views[0];
+    //var thisView = this;
     
     //Retrieve the updated string.
     var newStr = thisView.$el.find('#model'+modelIndex).find('.strInput').val();
