@@ -206,8 +206,10 @@ debugger;
       }
       
       //Refresh the Collection and View.
-      global.exampleCollection.refreshView = true;
-      global.exampleCollection.fetch();
+      //global.exampleCollection.refreshView = true;
+      //global.exampleCollection.fetch();
+      thisCollection.refreshView = true;
+      thisCollection.fetch();
       
     })
     .fail(function( jqxhr, textStatus, error ) {
