@@ -158,13 +158,22 @@ debugger;
     var thisView = thisPlugin.views[0];
     //var thisView = this;
     
-    //Retrieve the updated string.
-    var newStr = thisView.$el.find('#model'+modelIndex).find('.strInput').val();
-    thisModel.set('entry', newStr);
+    //This is a corner case where there are no entries in the DB.
+    if(thisModelId == "") {
+      thisView.addStr();
+      
+    //Default behavior.
+    } else {
+      //Retrieve the updated string.
+      var newStr = thisView.$el.find('#model'+modelIndex).find('.strInput').val();
+      thisModel.set('entry', newStr);
+
+      //Persist the updated model to the server.
+      thisModel.refreshView = true;
+      thisModel.save();
+    }
     
-    //Persist the updated model to the server.
-    thisModel.refreshView = true;
-    thisModel.save();
+   
     
   },
   
