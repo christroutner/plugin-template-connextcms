@@ -97,7 +97,7 @@ function loadCollections() {
       $.getScript(pluginDir+value, function(data, textStatus, jqxhr) {
         //debugger;
         
-        var constructor = "new "+thisPlugin.collectionNames[key]+"({pluginData: pluginData, pluginHandle: thisPlugin })";
+        var constructor = "new "+thisPlugin.collectionNames[key]+"(undefined, {pluginData: pluginData, pluginHandle: thisPlugin })";
         var thisCollection = eval(constructor);
         
         thisPlugin.collections.push(thisCollection);

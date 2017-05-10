@@ -23,7 +23,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
   //If true, the View will be re-render()'d when the collection is refreshed/reset.
   refreshView: false,
 
-  initialize: function() {
+  initialize: function(attributes, options) {
     debugger;
     //This function is often used for debugging, so leave it here.
     //this.on('change', function(model) {
@@ -31,10 +31,10 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
     //});
 
     //Load the plugin metdata as a local variables.
-    //this.pluginData = this.options.pluginData;
+    this.pluginData = options.pluginData;
     
     //Load a handle to the plugin constructs as a local variable.
-    //this.pluginHandle = this.options.pluginHandle;
+    this.pluginHandle = options.pluginHandle;
     
     this.url = '/api/exampleplugin/list',
 
