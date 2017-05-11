@@ -24,7 +24,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
   refreshView: false,
 
   initialize: function(options) {
-    debugger;
+    //debugger;
     //This function is often used for debugging, so leave it here.
     //this.on('change', function(model) {
     //  debugger;

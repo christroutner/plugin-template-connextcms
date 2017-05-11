@@ -12,12 +12,7 @@ var ExampleModel = Backbone.Model.extend({
   //Initialize is called upon the instantiation of this model. This function is executed once
   //per model retrieved from the server.
   initialize: function(attributes, options) {
-    //This function is often used for debugging, so leave it here.
-    //this.on('change', function() {
-      //debugger;        
-    //  this.save();
-    //});
-    debugger;
+    //debugger;
 
     //Load the plugin metdata as a local variables.
     this.pluginData = options.pluginData;
