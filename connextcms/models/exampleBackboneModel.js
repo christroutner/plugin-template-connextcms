@@ -1,4 +1,4 @@
-//exampleBackboneModel.js
+//plugin-template: exampleBackboneModel.js
 
 
 //Create local Model to represent the Post model I'll retrieve from the server.

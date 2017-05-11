@@ -1,4 +1,4 @@
-//pluginLoader.js
+//plugin-template: pluginLoader.js
 debugger;
 
 // BEGIN PLUGIN CUSTOMIZATION

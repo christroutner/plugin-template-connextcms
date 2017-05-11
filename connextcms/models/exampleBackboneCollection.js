@@ -1,4 +1,4 @@
-//exampleBackboneCollection.js
+//plugin-template: exampleBackboneCollection.js
 
 //Create an empty Collection to hold all the posts.
 var ExampleCollection = Backbone.Collection.extend({ //Collection Class
