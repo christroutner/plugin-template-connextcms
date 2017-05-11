@@ -97,7 +97,7 @@ var ExampleView1 = Backbone.View.extend({
   
   //This function is called by render(). It populates the View with Model data retrieved from the Collection.
   loadData: function() {
-    //debugger;
+    debugger;
     
     var scaffoldElem = this.$el.find('#pluginScaffold');
     
@@ -138,9 +138,6 @@ var ExampleView1 = Backbone.View.extend({
       console.error('Could not find plugin that matches: '+'plugin-template-connextcms');
       return;
     }
-      
-    
-    debugger;
     
     var thisCollection = thisPlugin.collections[0];
     
