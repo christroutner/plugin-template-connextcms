@@ -39,7 +39,7 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
     this.url = '/api/exampleplugin/list',
 
     this.on('add', function() {
-      debugger;
+      //debugger;
     });
 
     this.on('reset', function() {
@@ -56,6 +56,9 @@ var ExampleCollection = Backbone.Collection.extend({ //Collection Class
       log.push('Finished retrieving Example Collection data from server.');
 
     });
+    
+    //Fetch data from the server after initializing everything.
+    this.fetch();
   }
 });
 
