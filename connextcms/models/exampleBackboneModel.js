@@ -55,7 +55,7 @@ var ExampleModel = Backbone.Model.extend({
       }
       
       log.push('exampleBackboneModel.js/save() executed.');
-
+    })
     .fail(function( jqxhr, textStatus, error ) {
       debugger;
       
