@@ -36,7 +36,7 @@ var ExampleModel = Backbone.Model.extend({
 
     var thisModel = this;
     
-    $.getJSON(this.url, this.attributes, function(data) {
+    $.post(this.url, this.attributes, function(data) {
       //Regardless of success or failure, the API returns the JSON data of the model that was just updated.
       //debugger;
       
@@ -56,11 +56,17 @@ var ExampleModel = Backbone.Model.extend({
       
       log.push('exampleBackboneModel.js/save() executed.');
 
-    }).error( function(err) {
-      //This is the error handler.
-      //debugger;
+    .fail(function( jqxhr, textStatus, error ) {
+      debugger;
+      
+      global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
+      console.log( "Request Failed: " + error );
+      console.error('Error message: '+jqxhr.responseText);
+
       log.push('Error while trying exampleBackboneModel.js/save(). Most likely due to communication issue with the server.');
+      log.push('responseText: '+jqxhr.responseText);
       //sendLog();
+      
       console.error('Communication error with server while execute exampleBackboneModel.js/save()');
     });
 
