@@ -142,10 +142,10 @@ All Models and Collections in a plugin must be able to pass options into the ini
 ## Support Files
 The support files `merge-plugin`, and `pluginSettings.json` are used to configure your plugin.
 
-`merge-plugin` is a bash script file that places your plugin files in the appropriate location, according to
+* `merge-plugin` is a bash script file that places your plugin files in the appropriate location, according to
 [ConnextCMS installation best practices](https://github.com/skagitpublishing/ConnextCMS/wiki/2.-Installation#installation-best-practice).
 
-`pluginSettings.json` is a configuration file containing plugin metadata used by the ConnextCMS Plugin View, 
+* `pluginSettings.json` is a configuration file containing plugin metadata used by the ConnextCMS Plugin View, 
 `pluginView.js`, to load your plugin
 into ConnextCMS at run-time. This file is not used by KeystoneJS.
 
@@ -195,7 +195,7 @@ primaryViewInstance.
 
 ### pluginView.js
 pluginView.js is not part of this repository. It is a file within ConnextCMS that is responsible for loading
-plugins into ConnextCMS. I has the aspects you should be aware of:
+plugins into ConnextCMS. I has the aspects below that you should be aware of:
 
 * The meta data stored each plugins pluginSettings.json file is stored globally in 
 global.pluginView.pluginData[]. Each element in the array represents a plugin.
