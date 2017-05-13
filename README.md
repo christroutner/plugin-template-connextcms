@@ -140,9 +140,6 @@ The support files `merge-plugin`, `pluginLoader.js`, and `pluginSettings.json` a
 `pluginSettings.json` is a configuration file used by ConnextCMS to figure out which files need to be loaded. 
 This file is not used by KeystoneJS.
 
-`pluginLoader.js` is executed by ConnextCMS Dashboard on page load. It dynamically loads the plugin Backbone View,
-Models, and Collections. It also adds the plugin to the Left Menu View. This file is not used by KeystoneJS.
-
 
 ## Summary/Usage
 Because this plugin is effectively interfacing with two separate pieces of software (*KeystoneJS* and *ConnextCMS*), it's
