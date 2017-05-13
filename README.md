@@ -150,7 +150,7 @@ The support files `merge-plugin`, and `pluginSettings.json` are used to configur
 into ConnextCMS at run-time. This file is not used by KeystoneJS.
 
 
-###pluginSettings.json
+### pluginSettings.json
 This file contains the plugin metadata necessary to load it into ConnextCMS and generate a left-menu item. Here is an 
 explanation of the required fields in this file:
 
@@ -192,7 +192,8 @@ primaryViewInstance.
 
 primaryViewFAIcon - This is a Font Awesome Icon that will be displayed in the left-menu next to the primaryViewLabel.
 
-###pluginView.js
+
+### pluginView.js
 * The meta data stored each plugins pluginSettings.json file is stored globally in 
 global.pluginView.pluginData[]. Each element in the array represents a plugin.
 
