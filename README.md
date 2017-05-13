@@ -109,7 +109,8 @@ and place it in this directory, and add your field. Your updated model will over
 
 
 ## ConnextCMS
-[ConnextCMS](https://github.com/skagitpublishing/ConnextCMS) is a Backbone.js application and front end
+[ConnextCMS](https://github.com/skagitpublishing/ConnextCMS) is a [Backbone.js application](https://addyosmani.com/backbone-fundamentals/)
+and front end
 extension for KeystoneJS. The user interface mimics other popular CMS UI such as WordPress and Shopify. This plugin
 template allows you to create your own menu items and Backbone Views for extending both ConnextCMS and KeystoneJS.
 All plugin files that interact directly with ConnextCMS reside in the `connextcms` directory.
@@ -119,8 +120,13 @@ Plugins to ConnextCMS have two views they need to interact with. The first is th
 This view file resides in the `connextcms/views` directory. 
 
 The second view that a plugin must manage is the Left Menu View, which is the primary UI menu that is used to navigate
-around the ConnextCMS Dashboard. The file `pluginLoader.js` is executed by ConnextCMS on page load. This file contains
-the code for loading plugin view files as well as creating a menu item in the Left Menu View.
+around the ConnextCMS Dashboard. The file `pluginView.js` is executed by ConnextCMS on page load and generates the ConnextCMS
+Plugin View. This file contains
+the code for reading in the `pluginSettings.js` files, loading plugin files, as well as creating a menu item in the 
+Left Menu View.
+
+All plugin Views must be able to pass options into the initialize() function. See the `exampleView1.js` 
+file in this repository for an example.
 
 ### Backbone Models & Collections
 The Backbone Models and Collections used in ConnextCMS often mirror the KeystoneJS models. While the KeystoneJS models
@@ -130,15 +136,75 @@ They sync with the server via KeystoneJS API calls.
 By storing data in Backbone Models and Collections, data can be managed more efficiently and API calls between the
 Backbone application server are reduced. 
 
+All Models and Collections in a plugin must be able to pass options into the initialize() function. See the 
+`exampleBackboneModel.js` and `exampleBackboneCollection.js` files for examples.
 
 ## Support Files
-The support files `merge-plugin`, `pluginLoader.js`, and `pluginSettings.json` are used to configure your plugin.
+The support files `merge-plugin`, and `pluginSettings.json` are used to configure your plugin.
 
 `merge-plugin` is a bash script file that places your plugin files in the appropriate location, according to
 [ConnextCMS installation best practices](https://github.com/skagitpublishing/ConnextCMS/wiki/2.-Installation#installation-best-practice).
 
-`pluginSettings.json` is a configuration file used by ConnextCMS to figure out which files need to be loaded. 
-This file is not used by KeystoneJS.
+`pluginSettings.json` is a configuration file containing plugin metadata used by the ConnextCMS Plugin View, 
+`pluginView.js`, to load your plugin
+into ConnextCMS at run-time. This file is not used by KeystoneJS.
+
+
+###pluginSettings.json
+This file contains the plugin metadata necessary to load it into ConnextCMS and generate a left-menu item. Here is an 
+explanation of the required fields in this file:
+
+* pluginDirName - All plugins must be copied into the /public/plugins directory inside their own subdirectory. 
+This object contains the name of that directory.
+
+
+* backboneTemplateFiles - This is an array of filename paths within the plugins subdirectory. Each entry in 
+the array contains the path to a Backbone Template file.
+
+* backboneViewFiles - This is an array of filename paths within the plugins subdirectory. Each entry in the 
+array contains the path to a Backbone View file.
+
+* backboneModelFiles - This is an array of filename paths within the plugins subdirectory. Each entry in the 
+array contains the path to a Backbone Model file.
+
+* backboneCollectionFiles - This is an array of filename paths within the plugins subdirectory. Each entry 
+in the array contains the path to a Backbone Collection file.
+
+
+* backboneViewNames  - This is an array Backbone View Constructors associated with the plugin. The position 
+of each constructor name should match the position of the file names above.
+
+* backboneModelNames - This is an array of Backbone Model Constructors associated with the plugin. 
+
+* backboneCollectionNames - This is an array of Backbone Collection Constructors associated with the plugin.
+
+
+* primaryViewInstance - This is the name of an object that is created as a shortcut to the primary View for 
+this plugin. The primary View is the one that should be loaded when the user clicks on the left-menu item 
+for this plugin.
+
+* primaryViewConstructor - This is the name of the Backbone View Constructor that instantiates the 
+primaryViewInstance.
+
+* primaryViewId - This is the ID name that will be assigned to a <li> element appended to the left-menu.
+
+* primaryViewLabel - This is the text label that the user will see in the left-menu.
+
+primaryViewFAIcon - This is a Font Awesome Icon that will be displayed in the left-menu next to the primaryViewLabel.
+
+###pluginView.js
+* The meta data stored each plugins pluginSettings.json file is stored globally in 
+global.pluginView.pluginData[]. Each element in the array represents a plugin.
+
+* The Backbone constructs created for each plugin (model, views, collections) are stored globally 
+in global.pluginView.loadedPlugins[]. Each element in the array represent a plugin.
+
+* When Backbone constructs are instantiated, the pluginData and loadedPlugins data is passed along 
+to them. The initialize() function for each construct should be able to accept the passed in data 
+and store it locally inside the construct. The plugin-template-connext example shows how to do 
+this. The exact syntax is slightly different between Views, Models, and Collections.
+
+
 
 
 ## Summary/Usage
