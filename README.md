@@ -151,11 +151,11 @@ into ConnextCMS at run-time. This file is not used by KeystoneJS.
 
 
 ### pluginSettings.json
-This file contains the plugin metadata necessary to load it into ConnextCMS and generate a left-menu item. Here is an 
+This file contains the plugin metadata necessary to load your plugin into ConnextCMS and generate a left-menu item. Here is an 
 explanation of the required fields in this file:
 
 * pluginDirName - All plugins must be copied into the /public/plugins directory inside their own subdirectory. 
-This object contains the name of that directory.
+This object contains the name of that directory.
 
 
 * backboneTemplateFiles - This is an array of filename paths within the plugins subdirectory. Each entry in 
@@ -168,7 +168,7 @@ array contains the path to a Backbone View file.
 array contains the path to a Backbone Model file.
 
 * backboneCollectionFiles - This is an array of filename paths within the plugins subdirectory. Each entry 
-in the array contains the path to a Backbone Collection file.
+in the array contains the path to a Backbone Collection file.
 
 
 * backboneViewNames  - This is an array Backbone View Constructors associated with the plugin. The position 
@@ -190,10 +190,13 @@ primaryViewInstance.
 
 * primaryViewLabel - This is the text label that the user will see in the left-menu.
 
-primaryViewFAIcon - This is a Font Awesome Icon that will be displayed in the left-menu next to the primaryViewLabel.
+* primaryViewFAIcon - This is a Font Awesome Icon that will be displayed in the left-menu next to the primaryViewLabel.
 
 
 ### pluginView.js
+pluginView.js is not part of this repository. It is a file within ConnextCMS that is responsible for loading
+plugins into ConnextCMS. I has the aspects you should be aware of:
+
 * The meta data stored each plugins pluginSettings.json file is stored globally in 
 global.pluginView.pluginData[]. Each element in the array represents a plugin.
 
