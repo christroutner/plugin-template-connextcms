@@ -1,17 +1,6 @@
 //plugin-template: exampleView1.js
 //debugger;
 
-
-//Get a local copy of the JSON settings for this plugin.
-//Loop through all the loaded plugins until we find the one matches this plugin.
-//Copy the JSON data for this plugin into local variable pluginData.
-for(var i=0; i < global.pluginView.pluginData.length; i++) {
-  var pluginData = global.pluginView.pluginData[i];
-  if(pluginData.pluginDirName == 'plugin-template-connextcms') {
-    break;
-  }
-}
-
 //'use strict'; //Causes error trying to import ExampleView1 object into ConnextCMS.
 
 var ExampleTemplate1 = '/'+pluginData.backboneTemplateFiles[0];
@@ -37,6 +26,9 @@ var ExampleView1 = Backbone.View.extend({
     
     //Load a handle to the plugin constructs as a local variable.
     this.pluginHandle = this.options.pluginHandle;
+    
+    //Declare the view Constructor name. Needed to distinguish between views and to identify the primary view.
+    this.viewName = "ExampleView1";
     
     var thisView = this; //Maitain scope inside the AJAX handler.
     
