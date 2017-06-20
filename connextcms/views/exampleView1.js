@@ -3,7 +3,9 @@
 
 //'use strict'; //Causes error trying to import ExampleView1 object into ConnextCMS.
 
-var ExampleTemplate1 = '/'+pluginData.backboneTemplateFiles[0];
+//Global variable to hold the template.
+//var ExampleTemplate1 = '/'+pluginData.backboneTemplateFiles[0];
+var ExampleTemplate1;
 
 var ExampleView1 = Backbone.View.extend({
 
@@ -15,35 +17,49 @@ var ExampleView1 = Backbone.View.extend({
 
   // The DOM events specific to an item.
   events: {
-
+    
   },
 
   initialize: function () {
-    //debugger;
-    
-    //Load the plugin metdata as a local variables.
-    this.pluginData = this.options.pluginData;
-    
-    //Load a handle to the plugin constructs as a local variable.
-    this.pluginHandle = this.options.pluginHandle;
-    
-    //Declare the view Constructor name. Needed to distinguish between views and to identify the primary view.
-    this.viewName = "ExampleView1";
-    
-    var thisView = this; //Maitain scope inside the AJAX handler.
-    
-    //Get the template associated with this view.
-    var templatePath = '/plugins/'+this.pluginData.pluginDirName+ExampleTemplate1;
-    $.get(templatePath, '', function(template) {
+    try {
       //debugger;
-      
-      //Copy the contents of the template file into this views template object.
-      thisView.template = _.template(template);
 
-    })
-    .fail(function( jqxhr, error, exception ) {
+      //Load the plugin metdata as a local variables.
+      this.pluginData = this.options.pluginData;
+
+      //Load a handle to the plugin constructs as a local variable.
+      this.pluginHandle = this.options.pluginHandle;
+
+      //Declare the view Constructor name. Needed to distinguish between views and to identify the primary view.
+      this.viewName = "ExampleView1";
+
+      var thisView = this; //Maitain scope inside the AJAX handler.
+
+      //Get the template associated with this view.
+      ExampleTemplate1 = '/'+this.pluginData.backboneTemplateFiles[0];
+      var templatePath = '/plugins/'+this.pluginData.pluginDirName+ExampleTemplate1;
+      $.get(templatePath, '', function(template) {
+        //debugger;
+
+        //Copy the contents of the template file into this views template object.
+        thisView.template = _.template(template);
+
+      })
+      .fail(function( jqxhr, error, exception ) {
+        debugger;
+      });
+    } catch (err) {
       debugger;
-    });
+      var msg = 'Error while trying to initial view in exampleView1.js/initialize(). Error message: ';
+      console.error(msg);
+      console.error(err.message);
+
+      log.push(msg);
+      log.push(err.message);
+      //sendLog();
+      
+      global.modalView.errorModal(msg);
+    }
     
   },
 
@@ -74,6 +90,7 @@ var ExampleView1 = Backbone.View.extend({
   //left menu when the menu item for this plugin is selected.
   updateLeftMenuView: function() {
     //debugger;
+    
     //Remove the 'active' class from the menu item, unless it's a treeview menu item.
     //(treeview) menu items will remove their active class in their click event.
     if( !global.leftMenuView.$el.find('.sidebar-menu').find('.active').hasClass('treeview') )
@@ -94,6 +111,13 @@ var ExampleView1 = Backbone.View.extend({
     var scaffoldElem = this.$el.find('#pluginScaffold');
     
     var thisCollection = this.pluginHandle.collections[0];
+    
+    //Corner case of no models in the collection or new DB.
+    if((thisCollection.models.length == 1) && (thisCollection.models[0].get('_id') == "")) {
+      //Add the click handler to the button
+      scaffoldElem.find('.addBtn').click(this.addStr);
+      return;
+    }
     
     //Loop through all the Models in the Collection.
     for(var i=0; i < thisCollection.models.length; i++) {
