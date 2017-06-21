@@ -210,8 +210,6 @@ the View:
 
 ```
 initialize: function () {
-  try {
-    //debugger;
 
     //Load the plugin metdata as a local variables.
     this.pluginData = this.options.pluginData;
@@ -224,8 +222,8 @@ initialize: function () {
     ...
 ```
 
-The example above shows the passing in of options data to the Backbone View. The plugin Data and Handles are 
-then stored locally inside the View.
+The example above shows the passing in of options data to the Backbone View. The plugin Data, Handles, and name are 
+then stored locally inside the View. 
 
 
 
@@ -234,9 +232,8 @@ then stored locally inside the View.
 Because this plugin is effectively interfacing with two separate pieces of software (*KeystoneJS* and *ConnextCMS*), it's
 possible to use this template to build plugins for just one piece of software or both.
 
-If you have no interest in building a ConnextCMS extension, simply ignore the `connextcms` directory. You can create
-KeystoneJS routes, views, and models without any interaction with ConnextCMS.
-
 If you wish to build another view or menu item for ConnextCMS, you may not need to develop any code in the `keystone`
 directory. However, you will need to develop new KeystoneJS routes and models if you need to put any new information 
 into the database or create a new API for interacting with that data.
+
+Be sure to see the [documentation](http://connextcms.com/page/documentation-overview) and [videos](http://connextcms.com/page/videos) for additional help.
