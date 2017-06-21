@@ -183,10 +183,9 @@ of each constructor name should match the position of the file names above.
 this plugin. The primary View is the one that should be loaded when the user clicks on the left-menu item 
 for this plugin.
 
-* primaryViewConstructor - This is the name of the Backbone View Constructor that instantiates the 
-primaryViewInstance.
+* primaryViewConstructor - This is the name of the Backbone View Constructor that instantiates the primaryViewInstance.
 
-* primaryViewId - This is the ID name that will be assigned to a <li> element appended to the left-menu.
+* primaryViewId - This is the ID name that will be assigned to a `<li>` element appended to the left-menu.
 
 * primaryViewLabel - This is the text label that the user will see in the left-menu.
 
@@ -205,8 +204,28 @@ in global.pluginView.loadedPlugins[]. Each element in the array represent a plug
 
 * When Backbone constructs are instantiated, the pluginData and loadedPlugins data is passed along 
 to them. The initialize() function for each construct should be able to accept the passed in data 
-and store it locally inside the construct. The plugin-template-connext example shows how to do 
-this. The exact syntax is slightly different between Views, Models, and Collections.
+and store it locally inside the construct. The Views, Models, and Collections in this example show how to do 
+this. The exact syntax is slightly different between Views, Models, and Collections. Here is an example from
+the View:
+
+```
+initialize: function () {
+  try {
+    //debugger;
+
+    //Load the plugin metdata as a local variables.
+    this.pluginData = this.options.pluginData;
+
+    //Load a handle to the plugin constructs as a local variable.
+    this.pluginHandle = this.options.pluginHandle;
+
+    //Declare the view Constructor name. Needed to distinguish between views and to identify the primary view.
+    this.viewName = "ExampleView1";
+    ...
+```
+
+The example above shows the passing in of options data to the Backbone View. The plugin Data and Handles are 
+then stored locally inside the View.
 
 
 
